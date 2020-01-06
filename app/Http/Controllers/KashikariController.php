@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Kashikari;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class KashikariController extends Controller
 {
@@ -24,8 +26,20 @@ class KashikariController extends Controller
 
 
         $kashikari = new Kashikari;
-        $kashikari->fill($request->all())->save();
+        Auth::user()->kashikaris()->save($kashikari->fill($request->all()));
         return redirect('/lent')->with('flash_message', __('Registered.'));
+    }
+
+    public function usercreate(Request $request)
+    {
+        $request->validate([
+            'comment' => 'string|max:255',
+            'pic'=>'file|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        $user = new User;
+        Auth::user()->save($user->fill($request->all()));
+        return redirect('/mypage')->with('flash_message', __('Profile Regiseterd'));
     }
 
     public function index()
@@ -43,12 +57,18 @@ class KashikariController extends Controller
         return view('kashikari.show', ['kashikari' => $kashikari]);
     }
 
+    public function mypage()
+    {
+        $kashikaris = Auth::user()->kashikaris()->get();
+        return view('kashikari.mypage', compact('kashikaris'));
+    }
+
     public function edit($id)
     {
         if (!\ctype_digit($id)) {
             return redirect('/lent/new')->with('flash_message', __('Invalid operation was perfomed'));
         }
-        $kashikari = Kashikari::find($id);
+        $kashikari = Auth::user()->kashikaris()->find($id);
         return view('kashikari.edit', ['kashikari' => $kashikari]);
     }
 
@@ -68,8 +88,27 @@ class KashikariController extends Controller
         if (!ctype_digit($id)) {
             return redirect('/lent/new')->with('flash_message', __('Invalid operation was perfomed'));
         }
+        Auth::user()->kashikaris()->find($id)->delete();
+        return redirect('/mypage')->with('flash_message', __('Deleted.'));
+    }
 
-        Kashikari::find($id)->delete();
-        return redirect('/lent')->with('flash_message', __('Deleted.'));
+    public function myprofedit($id)
+    {
+        if (!ctype_digit($id)) {
+            return redirect('/mypage')->with('flash_message', __('Invalid operation was perfomed'));
+        }
+        $user = Auth::user()->find($id);
+        return view('kashikari.myprofedit', ['user' => $user]);
+    }
+
+    public function myprofupdate(Request $request, $id)
+    {
+        if (!ctype_digit($id)) {
+            return redirect('/mypage')->with('flash_message', __('Invalid operation was perfomed'));
+        }
+        $user = User::find($id);
+        $user->fill($request->all())->save();
+
+        return redirect('/mypage')->with('flash_message', __('Updated'));
     }
 }

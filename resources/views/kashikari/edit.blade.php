@@ -74,7 +74,7 @@
                             <label for="comment" class="col-md-4 col-form-label text-md-right">{{ __('comment')}}</label>
 
                             <div class="col-md-6">
-                                <input id="comment" type="text" class="form-control @error('comment') is-invalid @enderror" name="comment" value="{{ $kashikari->comment }}" autocomplete="comment" autofocus>
+                                <textarea id="comment" type="text" class="form-control @error('comment') is-invalid @enderror" name="comment" autocomplete="comment" autofocus>{{ $kashikari->comment }}</textarea>
 
                                 @error('comment')
                                 <span class="invalid-feedback" role="alert">

@@ -11,6 +11,8 @@
 |
 */
 
+
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -21,7 +23,12 @@ Route::get('/lent/{id}/edit', 'KashikariController@edit')->name('kashikari.edit'
 Route::post('/lent/{id}/edit', 'KashikariController@update')->name('kashikari.update');
 Route::post('/lent/{id}/delete', 'KashikariController@delete')->name('kashikari.delete');
 Route::get('/lent/{id}', 'KashikariController@show')->name('kashikari.show');
+Route::get('/mypage', 'KashikariController@mypage')->name('kashikari.mypage')->middleware('check');
+Route::get('/users/{id}/edit', 'KashikariController@myprofedit')->name('kashikari.myprofedit');
+Route::post('users/{id}/edit', 'KashikariController@myprofupdate')->name('kashikari.myprofupdate');
+
 
 Auth::routes();
+//認証機能に関するrootはこれにまとめられている。
 
 Route::get('/home', 'HomeController@index')->name('home');
