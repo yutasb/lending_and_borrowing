@@ -23,9 +23,12 @@ Route::get('/lent/{id}/edit', 'KashikariController@edit')->name('kashikari.edit'
 Route::post('/lent/{id}/edit', 'KashikariController@update')->name('kashikari.update');
 Route::post('/lent/{id}/delete', 'KashikariController@delete')->name('kashikari.delete');
 Route::get('/lent/{id}', 'KashikariController@show')->name('kashikari.show');
+// Route::post('/lent/{id}', 'kashikariController@showboard')->name('kashikari.show');
 Route::get('/mypage', 'KashikariController@mypage')->name('kashikari.mypage')->middleware('check');
 Route::get('/users/{id}/edit', 'KashikariController@myprofedit')->name('kashikari.myprofedit');
 Route::post('users/{id}/edit', 'KashikariController@myprofupdate')->name('kashikari.myprofupdate');
+Route::get('/msg/{id}', 'KashikariController@msg')->name('kashikari.msg');
+Route::post('/msg/{id}', 'KashikariController@showmsg')->name('kashikari.showmsg');
 
 
 Auth::routes();

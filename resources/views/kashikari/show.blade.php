@@ -6,18 +6,33 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    {{__('Lent'.'「'.$kashikari->title.'」')}}
+                    {{__($kashikari->title.''.$kashikari->category_id)}}
+                    <a href="{{route('kashikari.showmsg',$kashikari->id)}}" class='btn btn-warning'>{{__('Borrow!')}} </a>
+
                 </div>
                 <div class='card-body text-center'>
-                    <p>{{$kashikari->category_id}}</p>
-                    <p>{{$kashikari->place}}</p>
-                    <p>{{$kashikari->price}}円</p>
-                    <p>{{$kashikari->comment}}</p>
                     <p>{{$kashikari->pic1}}</p>
                     <p>{{$kashikari->pic2}}</p>
                     <p>{{$kashikari->pic3}}</p>
+
+                    <p>{{$kashikari->place}}</p>
+                    <p>{{$kashikari->price}}円</p>
+                    <p>{{$kashikari->comment}}</p>
+
+                </div>
+                <div class='card-header text-left'>
+                    <h6>掲示板</h6>
+                    <form method='post'>
+                        @csrf
+
+                        <input type='submit' value='送信'>
+                    </form>
+
                 </div>
             </div>
+
+
+
         </div>
     </div>
 </div>

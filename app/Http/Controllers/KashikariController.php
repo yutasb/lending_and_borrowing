@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Kashikari;
+use App\Message;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -34,7 +35,7 @@ class KashikariController extends Controller
     {
         $request->validate([
             'comment' => 'string|max:255',
-            'pic'=>'file|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'pic' => 'file|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         $user = new User;
@@ -51,10 +52,22 @@ class KashikariController extends Controller
     public function show($id)
     {
         if (!\ctype_digit($id)) {
-            return redirect('/lent/new')->with('flash_message', __('Registered.'));
+            return redirect('/lent/new')->with('flash_message', __('Invalid operation was perfomed.'));
         }
         $kashikari = Kashikari::find($id);
-        return view('kashikari.show', ['kashikari' => $kashikari]);
+        $message = Message::find($id);
+        return view('kashikari.show', ['kashikari' => $kashikari], ['message' => $message]);
+    }
+
+    public function showboard($id)
+    {
+        if (!\ctype_digit($id)) {
+            return redirect('/lent/new')->with('flash_message', __('Invalid operation was perfomed.'));
+        }
+
+        $message = Message::find($id);
+        $kashikari = Kashikari::find($id);
+        return view('kashikari.show', ['kashikari' => $kashikari], ['message' => $message]);
     }
 
     public function mypage()
@@ -110,5 +123,31 @@ class KashikariController extends Controller
         $user->fill($request->all())->save();
 
         return redirect('/mypage')->with('flash_message', __('Updated'));
+    }
+
+    public function msg($id)
+    {
+        if (!\ctype_digit($id)) {
+            return redirect('/lent')->with('flash_message', __('Invalid operation was perfomed.'));
+        }
+        $message = Message::all();
+        return view('kashikari.msg', ['message' => $message]);
+    }
+
+
+    public function showmsg(Request $request, $id)
+    {
+
+        $request->validate([
+            'msg' => 'required|string|max:255',
+        ]);
+        $message = new Message;
+        $message->fill($request->all())->save();
+        // return view('kashikari.showmsg', ['message' => $message]);
+
+        $message = kashikari()->find($id);
+
+        $messages = Message::all();
+        return view('kashikari.showmsg', ['messages' => $messages]);
     }
 }
