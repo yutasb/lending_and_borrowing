@@ -11,9 +11,10 @@
 
                 </div>
                 <div class='card-body text-center'>
-                    <p>{{$kashikari->pic1}}</p>
-                    <p>{{$kashikari->pic2}}</p>
-                    <p>{{$kashikari->pic3}}</p>
+                    <img src="{{$kashikari->pic1}}" alt='イメージ画像1'>
+                    <img src="{{$kashikari->pic2}}" alt='イメージ画像2'>
+                    <img src="{{$kashikari->pic3}}" alt='イメージ画像3'>
+
 
                     <p>{{$kashikari->place}}</p>
                     <p>{{$kashikari->price}}円</p>

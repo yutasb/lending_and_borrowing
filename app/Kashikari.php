@@ -13,9 +13,18 @@ class Kashikari extends Model
         return $this->belongsTo('App\User');
     }
 
-
-    public function message()
+    public function messages()
     {
-        return $this->belongsTo('App\Message');
+        return $this->hasMany('App\Message');
     }
+
+    // public function getId()
+    // {
+    //     return $this->id;
+    // }
+
+    // public function message()
+    // {
+    //     return $this->belongsTo('App\Message');
+    // }
 }
