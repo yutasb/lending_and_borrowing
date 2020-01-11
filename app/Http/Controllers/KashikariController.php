@@ -7,6 +7,7 @@ use App\Kashikari;
 use App\Message;
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class KashikariController extends Controller
 {
@@ -14,6 +15,7 @@ class KashikariController extends Controller
     {
         return view('kashikari.new');
     }
+
     public function create(Request $request)
     {
         $request->validate([
@@ -23,24 +25,40 @@ class KashikariController extends Controller
             'comment' => 'required|string|max:255',
         ]);
         $kashikari = new Kashikari;
-        Auth::user()->kashikaris()->save($kashikari->fill($request->all()));
+        $kashikari->title = $request->title;
+        $kashikari->place = $request->place;
+        $kashikari->price = $request->price;
+        $kashikari->comment = $request->comment;
+        $filename = $request->file('pic1')->store('public/post_images');
+        $kashikari->pic1 = basename($filename);
+        $filename = $request->file('pic2')->store('public/post_images');
+        $kashikari->pic2 = basename($filename);
+        $filename = $request->file('pic3')->store('public/post_images');
+        $kashikari->pic3 = basename($filename);
+        $kashikari->user_id = Auth::user()->id;
+        $kashikari->save();
+
+        // Auth::user()->kashikaris()->save($kashikari->fill($request->all()));
         return redirect('/lent')->with('flash_message', __('Registered.'));
     }
-    public function usercreate(Request $request)
-    {
-        $request->validate([
-            'comment' => 'string|max:255',
-            'pic' => 'file|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
-        $user = new User;
-        Auth::user()->save($user->fill($request->all()));
-        return redirect('/mypage')->with('flash_message', __('Profile Regiseterd'));
-    }
+
+
+
+
+
+
     public function index()
     {
         $kashikaris = Kashikari::all();
+        // 全レコードを取得
+
         return view('kashikari.index', ['kashikaris' => $kashikaris]);
+        //index.blade.phpの$kashikaris部分が、$kashikari(今回の場合Kashikari::all)に置き換えられる。
     }
+
+
+
+
     public function show($id)
     {
         if (!\ctype_digit($id)) {
@@ -65,6 +83,7 @@ class KashikariController extends Controller
         $user = Auth::user();
         $kashikaris = Auth::user()->kashikaris()->get();
         return view('kashikari.mypage', ['kashikaris' => $kashikaris, 'user' => $user, 'pic' => str_replace('public/', 'storage/', Auth::user()->pic),]);
+        // str_replace("検索を行う文字列", "置き換えを行う文字列", "対象の文字列");
     }
 
     public function edit($id)

@@ -4,6 +4,7 @@
 <div class="container">
 
     <img src="{{$pic}}" alt='icon' width=150px>
+
     <h3>{{$user->name}}</h3>
     <p>{{$user->myself}}</p>
 

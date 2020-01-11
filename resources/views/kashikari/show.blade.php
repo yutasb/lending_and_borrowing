@@ -11,13 +11,14 @@
 
                 </div>
                 <div class='card-body text-center'>
-                    <img src="{{$kashikari->pic1}}" alt='イメージ画像1'>
-                    <img src="{{$kashikari->pic2}}" alt='イメージ画像2'>
-                    <img src="{{$kashikari->pic3}}" alt='イメージ画像3'>
+                    <img src="{{asset('storage/post_images/'.$kashikari->pic1)}}" alt='イメージ画像1' width=150px>
+                    <img src="{{asset('storage/post_images/'.$kashikari->pic2)}}" alt='イメージ画像2' width=150px>
+                    <img src="{{asset('storage/post_images/'.$kashikari->pic3)}}" alt='イメージ画像3' width=150px>
+
 
 
                     <p>{{$kashikari->place}}</p>
-                    <p>{{$kashikari->price}}円</p>
+                    <p>{{$kashikari->price}}円　/ 1泊</p>
                     <p>{{$kashikari->comment}}</p>
 
                 </div>

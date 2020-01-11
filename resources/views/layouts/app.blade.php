@@ -51,6 +51,8 @@
                         </li>
                         @endif
                         @else
+                        <li class='nav-item dropdown'><a id="navbarDropdown" class="nav-link " href='/lent/new' role='button'>New</a></li>
+
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ $user->name }} <span class="caret"></span>
@@ -87,7 +89,7 @@
         </div>
         @endif
 
-        <main class="py-4">
+        <main class=" py-4">
             @yield('content')
         </main>
     </div>

@@ -9,8 +9,9 @@
             <div class="card">
                 <div class="card-body">
                     <a href="{{ route('kashikari.show',$kashikari->id ) }}">
-                        <img src="{{$kashikari->pic1}}" alt='イメージ画像'>
+                        <img src="{{asset('storage/post_images/'.$kashikari->pic1)}}" alt='イメージ画像' width=150px>
                         <h5 class="card-title">{{$kashikari->title}}</h5>
+
                     </a>
                 </div>
             </div>

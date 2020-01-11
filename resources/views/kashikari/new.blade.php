@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Lent Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('kashikari.new') }}">
+                    <form method="POST" action="{{ route('kashikari.new') }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group row">
@@ -71,7 +71,7 @@
                             <label for="comment" class="col-md-4 col-form-label text-md-right">{{ __('comment')}}</label>
 
                             <div class="col-md-6">
-                                <textarea id="comment" type="text" class="form-control @error('comment') is-invalid @enderror" name="comment"  autocomplete="comment" autofocus>{{ old('comment') }}</textarea>
+                                <textarea id="comment" type="text" class="form-control @error('comment') is-invalid @enderror" name="comment" autocomplete="comment" autofocus>{{ old('comment') }}</textarea>
 
                                 @error('comment')
                                 <span class="invalid-feedback" role="alert">
@@ -85,7 +85,7 @@
                             <label for="pic1" class="col-md-4 col-form-label text-md-right">{{ __('pic1')}}</label>
 
                             <div class="col-md-6">
-                                <input id="pic1" type="file" class="form-control @error('comment') is-invalid @enderror" name="pic1" value="{{ old('pic1') }}">
+                                <input id="pic1" type="file" class="form-control-file @error('pic1') is-invalid @enderror" name="pic1" value="{{ old('pic1') }}">
 
                                 @error('pic1')
                                 <span class="invalid-feedback" role="alert">
@@ -99,7 +99,7 @@
                             <label for="pic2" class="col-md-4 col-form-label text-md-right">{{ __('pic2')}}</label>
 
                             <div class="col-md-6">
-                                <input id="pic2" type="file" class="form-control @error('comment') is-invalid @enderror" name="pic2" value="{{ old('pic2') }}">
+                                <input id="pic2" type="file" class="form-control-file @error('pic2') is-invalid @enderror" name="pic2" value="{{ old('pic2') }}">
 
                                 @error('pic2')
                                 <span class="invalid-feedback" role="alert">
@@ -113,7 +113,7 @@
                             <label for="pic3" class="col-md-4 col-form-label text-md-right">{{ __('pic3')}}</label>
 
                             <div class="col-md-6">
-                                <input id="pic3" type="file" class="form-control @error('comment') is-invalid @enderror" name="pic3" value="{{ old('pic3') }}">
+                                <input id="pic3" type="file" class="form-control-file @error('pic3') is-invalid @enderror" name="pic3" value="{{ old('pic3') }}">
 
                                 @error('pic3')
                                 <span class="invalid-feedback" role="alert">
