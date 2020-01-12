@@ -101,6 +101,7 @@
                             <div class="col-md-6">
                                 <input id="pic2" type="file" class="form-control-file @error('pic2') is-invalid @enderror" name="pic2" value="{{ old('pic2') }}">
 
+
                                 @error('pic2')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

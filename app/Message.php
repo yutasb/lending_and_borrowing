@@ -13,7 +13,12 @@ class Message extends Model
         return $this->belongsTo('App\Kashikari');
     }
 
-    public function getData()
+    public function getToUser()
+    {
+        return $this->kashikari()->user_id;
+    }
+
+    public function getMsg()
     {
         return $this->msg;
     }

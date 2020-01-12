@@ -31,20 +31,22 @@ class KashikariController extends Controller
         $kashikari->comment = $request->comment;
         $filename = $request->file('pic1')->store('public/post_images');
         $kashikari->pic1 = basename($filename);
-        $filename = $request->file('pic2')->store('public/post_images');
-        $kashikari->pic2 = basename($filename);
-        $filename = $request->file('pic3')->store('public/post_images');
-        $kashikari->pic3 = basename($filename);
+
+        $filename2 = $request->file('pic2');
+        if ($filename2) {
+            $filename2->store('public/post_images');
+            $kashikari->pic2 = basename($filename);
+        }
+        if ($kashikari->pic3) {
+            $filename = $request->file('pic3')->store('public/post_images');
+            $kashikari->pic3 = basename($filename);
+        }
         $kashikari->user_id = Auth::user()->id;
         $kashikari->save();
 
         // Auth::user()->kashikaris()->save($kashikari->fill($request->all()));
         return redirect('/lent')->with('flash_message', __('Registered.'));
     }
-
-
-
-
 
 
     public function index()
@@ -55,9 +57,6 @@ class KashikariController extends Controller
         return view('kashikari.index', ['kashikaris' => $kashikaris]);
         //index.blade.phpの$kashikaris部分が、$kashikari(今回の場合Kashikari::all)に置き換えられる。
     }
-
-
-
 
     public function show($id)
     {
@@ -120,8 +119,6 @@ class KashikariController extends Controller
         return view('kashikari.myprofedit', ['user' => $user, 'pic' => str_replace('public/', 'storage/', Auth::user()->pic),]);
     }
 
-
-
     public function myprofupdate(Request $request, $id)
     {
         if (!ctype_digit($id)) {
@@ -140,19 +137,13 @@ class KashikariController extends Controller
         return redirect('/mypage')->with('flash_message', __('Updated'));
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    public function otherprofile($id)
+    {
+        $users = User::find($id);
+        $kashikaris = $users->kashikaris()->get();
+        return view('kashikari.otherprofile', ['users' => $users, 'kashikaris' => $kashikaris]);
+        // str_replace("検索を行う文字列", "置き換えを行う文字列", "対象の文字列");
+    }
 
 
 
@@ -162,19 +153,24 @@ class KashikariController extends Controller
         if (!\ctype_digit($id)) {
             return redirect('/lent')->with('flash_message', __('Invalid operation was perfomed.'));
         }
-        $message = Message::all();
+        $message = Message::find($id);
         return view('kashikari.msg', ['message' => $message]);
     }
+
     public function showmsg(Request $request, $id)
     {
         $request->validate([
             'msg' => 'required|string|max:255',
         ]);
-        $message = new Message;
-        $message->fill($request->all())->save();
-        // return view('kashikari.showmsg', ['message' => $message]);
-        $message = kashikari()->find($id);
-        $messages = Message::all();
+        $messages = new Message;
+        $kashikaris = Kashikari::find($id);
+        $messages->borrower = Auth::user()->id;
+        $messages->lender = $kashikaris->user_id;
+        $messages->msg = $request->msg;
+        $messages->kashikari_id = $kashikaris->id;
+
+        $messages->save();
+
         return view('kashikari.showmsg', ['messages' => $messages]);
     }
 }

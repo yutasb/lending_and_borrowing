@@ -11,8 +11,8 @@
                 <div class='card-body text-center'>
                     <form method='post'>
                         @csrf
-                        @foreach ($messages as $mesage)
-                        <p>{{$mesage->getData()}}</p>
+                        @foreach ($messages as $message)
+                        <p>{{$message->getMsg()}}</p>
                         @endforeach
                         <input type='text' name='msg'>
                         <input type='submit' value='送信'>

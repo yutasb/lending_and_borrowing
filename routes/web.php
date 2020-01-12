@@ -12,26 +12,42 @@
 */
 
 
-
+Auth::routes();
+//認証機能に関するrootはこれにまとめられている。
+Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', function () {
     return view('welcome');
 });
+
 Route::get('/lent/new', 'KashikariController@new')->name('kashikari.new');
 Route::post('/lent/new', 'KashikariController@create');
+// 新規作成
 Route::get('/lent', 'KashikariController@index')->name('kashikari');
+// 一覧表示
+Route::get('/lent/{id}', 'KashikariController@show')->name('kashikari.show');
+// 投稿詳細表示
 Route::get('/lent/{id}/edit', 'KashikariController@edit')->name('kashikari.edit');
 Route::post('/lent/{id}/edit', 'KashikariController@update')->name('kashikari.update');
+// 投稿編集
 Route::post('/lent/{id}/delete', 'KashikariController@delete')->name('kashikari.delete');
-Route::get('/lent/{id}', 'KashikariController@show')->name('kashikari.show');
-// Route::post('/lent/{id}', 'kashikariController@showboard')->name('kashikari.show');
+// 投稿削除
 Route::get('/mypage', 'KashikariController@mypage')->name('kashikari.mypage')->middleware('check');
+// マイページ
 Route::get('/users/{id}/edit', 'KashikariController@myprofedit')->name('kashikari.myprofedit');
 Route::post('users/{id}/edit', 'KashikariController@myprofupdate')->name('kashikari.myprofupdate');
+// プロフィール編集
+Route::get('/users/{id}', 'KashikariController@otherprofile')->name('kashikari.otherprofile');
+//他ユーザーのプロフィール表示
+
+
+
+
+// Route::post('/lent/{id}', 'kashikariController@showboard')->name('kashikari.show');
 Route::get('/msg/{id}', 'KashikariController@msg')->name('kashikari.msg');
 Route::post('/msg/{id}', 'KashikariController@showmsg')->name('kashikari.showmsg');
+//チャット
 
 
-Auth::routes();
-//認証機能に関するrootはこれにまとめられている。
-
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/lent/{id}/likes', 'LikesController@store');
+// Route::post('/lent/{id}/likes', 'LikesController@destroy');
+//お気に入り

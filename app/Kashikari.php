@@ -13,18 +13,23 @@ class Kashikari extends Model
         return $this->belongsTo('App\User');
     }
 
+
+
+    public function getIcon()
+    {
+        $pic = $this->user->pic;
+        return basename($pic);
+    }
+
+
+
+    public function likes()
+    {
+        return $this->hasMany('App\Like');
+    }
+
     public function messages()
     {
         return $this->hasMany('App\Message');
     }
-
-    // public function getId()
-    // {
-    //     return $this->id;
-    // }
-
-    // public function message()
-    // {
-    //     return $this->belongsTo('App\Message');
-    // }
 }
