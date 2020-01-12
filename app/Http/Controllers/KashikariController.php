@@ -153,8 +153,8 @@ class KashikariController extends Controller
         if (!\ctype_digit($id)) {
             return redirect('/lent')->with('flash_message', __('Invalid operation was perfomed.'));
         }
-        $message = Message::find($id);
-        return view('kashikari.msg', ['message' => $message]);
+        $messages = Message::find($id);
+        return view('kashikari.msg', ['messages' => $messages]);
     }
 
     public function showmsg(Request $request, $id)
