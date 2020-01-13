@@ -44,7 +44,7 @@ class KashikariController extends Controller
         $kashikari->user_id = Auth::user()->id;
         $kashikari->save();
 
-        // Auth::user()->kashikaris()->save($kashikari->fill($request->all()));
+
         return redirect('/lent')->with('flash_message', __('Registered.'));
     }
 
@@ -147,13 +147,10 @@ class KashikariController extends Controller
 
 
 
-
+    //おそらくこのmsg($id)でとってくるのはmessagesのidであるため、だめ。本当にとってきたいのは、messagesのkashikari_idである。
     public function msg($id)
     {
-        if (!\ctype_digit($id)) {
-            return redirect('/lent')->with('flash_message', __('Invalid operation was perfomed.'));
-        }
-        $messages = Message::find($id);
+        $messages = Message::where('kashikari_id', $id)->get();  //これでkashikari_idとURIの{id}が一致しているレコードを取ってこられる。
         return view('kashikari.msg', ['messages' => $messages]);
     }
 
@@ -168,9 +165,8 @@ class KashikariController extends Controller
         $messages->lender = $kashikaris->user_id;
         $messages->msg = $request->msg;
         $messages->kashikari_id = $kashikaris->id;
-
         $messages->save();
 
-        return view('kashikari.showmsg', ['messages' => $messages]);
+        return redirect()->route('kashikari.msg', ['id' => $messages->kashikari_id]);
     }
 }

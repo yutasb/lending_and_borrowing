@@ -8,7 +8,7 @@
                 <div class="card-header">
                     <a href="{{route('kashikari.otherprofile',$kashikari->user_id)}}"><img src="{{asset('storage/post_images/'.$kashikari->getIcon())}}" width=50px></a>
                     {{__($kashikari->title.''.$kashikari->category_id)}}
-                    <a href="{{route('kashikari.showmsg',$kashikari->id)}}" class='btn btn-warning'>{{__('Borrow!')}} </a>
+                    <a href="{{route('kashikari.msg',$kashikari->id)}}" class='btn btn-warning'>{{__('Borrow!')}} </a>
 
 
 
@@ -51,6 +51,7 @@
                     </form>
 
                 </div>
+
             </div>
 
 

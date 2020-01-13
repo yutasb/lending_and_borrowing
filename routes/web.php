@@ -44,7 +44,7 @@ Route::get('/users/{id}', 'KashikariController@otherprofile')->name('kashikari.o
 
 // Route::post('/lent/{id}', 'kashikariController@showboard')->name('kashikari.show');
 Route::get('/msg/{id}', 'KashikariController@msg')->name('kashikari.msg');
-Route::post('/msg/{id}', 'KashikariController@showmsg')->name('kashikari.showmsg');
+Route::post('/msg/{id}', 'KashikariController@showmsg');
 //チャット
 
 
