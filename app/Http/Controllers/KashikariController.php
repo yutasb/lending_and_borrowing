@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Kashikari;
 use App\Message;
 use App\User;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -190,6 +191,15 @@ class KashikariController extends Controller
         $categories = config('category');
         return view('kashikari.index')->with(['categories' => $categories]);
     }
+
+
+    public function search($id)
+    {
+        $kashikaris = Kashikari::where('category_id', $id)->get();
+        return view('kashikari.index', ['kashikaris' => $kashikaris]);
+    }
+
+
 
 
 

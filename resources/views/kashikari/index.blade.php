@@ -5,8 +5,8 @@
 
 <div class="col-sm-2">
 
-    @foreach(config('category') as $category => $name)
-    <a href='#'><input value="{{ $name }}" type='button' class='btn btn-outline-primary w-75'> </a> <br><br>
+    @foreach(config('category') as $category=>$name )
+    <a href="{{route('kashikari.search',$category)}}"><input value="{{ $name }}" type='button' class='btn btn-outline-primary w-75'> </a> <br><br>
     @endforeach
 
 </div>

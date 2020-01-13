@@ -11,6 +11,7 @@
 |
 */
 
+use App\Http\Controllers\KashikariController;
 
 Auth::routes();
 //認証機能に関するrootはこれにまとめられている。
@@ -24,6 +25,8 @@ Route::post('/lent/new', 'KashikariController@create');
 // 新規作成
 Route::get('/lent', 'KashikariController@index')->name('kashikari');
 // 一覧表示
+Route::get('/lent/category/{id}', 'KashikariController@search')->name('kashikari.search');
+//カテゴリ検索
 Route::get('/lent/{id}', 'KashikariController@show')->name('kashikari.show');
 // 投稿詳細表示
 Route::post('/lent/{id}', 'KashikariController@sendmsg');
