@@ -26,6 +26,8 @@ Route::get('/lent', 'KashikariController@index')->name('kashikari');
 // 一覧表示
 Route::get('/lent/{id}', 'KashikariController@show')->name('kashikari.show');
 // 投稿詳細表示
+Route::post('/lent/{id}', 'KashikariController@sendmsg');
+//公開掲示板
 Route::get('/lent/{id}/edit', 'KashikariController@edit')->name('kashikari.edit');
 Route::post('/lent/{id}/edit', 'KashikariController@update')->name('kashikari.update');
 // 投稿編集
@@ -42,10 +44,10 @@ Route::get('/users/{id}', 'KashikariController@otherprofile')->name('kashikari.o
 
 
 
-// Route::post('/lent/{id}', 'kashikariController@showboard')->name('kashikari.show');
-Route::get('/msg/{id}', 'KashikariController@msg')->name('kashikari.msg');
-Route::post('/msg/{id}', 'KashikariController@showmsg');
-//チャット
+
+// Route::get('/msg/{id}', 'KashikariController@msg')->name('kashikari.msg');
+// Route::post('/msg/{id}', 'KashikariController@showmsg');
+//プライベートチャット
 
 
 // Route::get('/lent/{id}/likes', 'LikesController@store');

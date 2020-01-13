@@ -64,17 +64,23 @@ class KashikariController extends Controller
             return redirect('/lent/new')->with('flash_message', __('Invalid operation was perfomed.'));
         }
         $kashikari = Kashikari::find($id);
-        $message = Message::find($id);
-        return view('kashikari.show', ['kashikari' => $kashikari], ['message' => $message]);
+        $messages = Message::where('kashikari_id', $id)->get();
+        return view('kashikari.show', ['kashikari' => $kashikari], ['messages' => $messages]);
     }
-    public function showboard($id)
+
+    public function sendmsg(Request $request, $id)
     {
-        if (!\ctype_digit($id)) {
-            return redirect('/lent/new')->with('flash_message', __('Invalid operation was perfomed.'));
-        }
-        $message = Message::find($id);
-        $kashikari = Kashikari::find($id);
-        return view('kashikari.show', ['kashikari' => $kashikari], ['message' => $message]);
+        $request->validate([
+            'msg' => 'required|string|max:255',
+        ]);
+        $messages = new Message;
+        $kashikaris = Kashikari::find($id);
+        $messages->user_id = Auth::user()->id;
+        $messages->msg = $request->msg;
+        $messages->kashikari_id = $kashikaris->id;
+        $messages->save();
+
+        return redirect()->route('kashikari.show', ['id' => $messages->kashikari_id]);
     }
 
     public function mypage()
@@ -147,26 +153,31 @@ class KashikariController extends Controller
 
 
 
+
+
+
+    // ↓↓↓↓↓↓↓↓↓↓↓↓プライベートチャット↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+
     //おそらくこのmsg($id)でとってくるのはmessagesのidであるため、だめ。本当にとってきたいのは、messagesのkashikari_idである。
-    public function msg($id)
-    {
-        $messages = Message::where('kashikari_id', $id)->get();  //これでkashikari_idとURIの{id}が一致しているレコードを取ってこられる。
-        return view('kashikari.msg', ['messages' => $messages]);
-    }
+    // public function msg($id)
+    // {
+    //     $messages = Message::where('kashikari_id', $id)->get();  //これでkashikari_idとURIの{id}が一致しているレコードを取ってこられる。
+    //     return view('kashikari.msg', ['messages' => $messages]);
+    // }
 
-    public function showmsg(Request $request, $id)
-    {
-        $request->validate([
-            'msg' => 'required|string|max:255',
-        ]);
-        $messages = new Message;
-        $kashikaris = Kashikari::find($id);
-        $messages->borrower = Auth::user()->id;
-        $messages->lender = $kashikaris->user_id;
-        $messages->msg = $request->msg;
-        $messages->kashikari_id = $kashikaris->id;
-        $messages->save();
+    // public function showmsg(Request $request, $id)
+    // {
+    //     $request->validate([
+    //         'msg' => 'required|string|max:255',
+    //     ]);
+    //     $messages = new Message;
+    //     $kashikaris = Kashikari::find($id);
+    //     $messages->borrower = Auth::user()->id;
+    //     $messages->lender = $kashikaris->user_id;
+    //     $messages->msg = $request->msg;
+    //     $messages->kashikari_id = $kashikaris->id;
+    //     $messages->save();
 
-        return redirect()->route('kashikari.msg', ['id' => $messages->kashikari_id]);
-    }
+    //     return redirect()->route('kashikari.msg', ['id' => $messages->kashikari_id]);
+    // }
 }

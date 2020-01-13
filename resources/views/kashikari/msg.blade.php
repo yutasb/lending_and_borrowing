@@ -12,9 +12,7 @@
 
                 </div>
                 <div class='card-body text-center'>
-                    @foreach($messages as $message)
-                    <p>{{$message->msg}}</p>
-                    @endforeach
+
 
                     <!-- コメント表示 -->
                     <form method='post'>

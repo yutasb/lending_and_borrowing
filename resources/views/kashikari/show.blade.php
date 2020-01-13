@@ -6,9 +6,9 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <a href="{{route('kashikari.otherprofile',$kashikari->user_id)}}"><img src="{{asset('storage/post_images/'.$kashikari->getIcon())}}" width=50px></a>
-                    {{__($kashikari->title.''.$kashikari->category_id)}}
-                    <a href="{{route('kashikari.msg',$kashikari->id)}}" class='btn btn-warning'>{{__('Borrow!')}} </a>
+                    <h3><a href="{{route('kashikari.otherprofile',$kashikari->user_id)}}"><img src="{{asset('storage/post_images/'.$kashikari->getIcon())}}" width=50px></a>
+                        {{__($kashikari->title.''.$kashikari->category_id)}}
+                        <!-- borrow!入れてプライベートチャットに飛ばす-->
 
 
 
@@ -43,20 +43,32 @@
 
                 </div>
                 <div class='card-header text-left'>
-                    <h6>{{__('Board')}}</h6>
-                    <form method='post'>
-                        @csrf
-
-                        <input type='submit' value='送信'>
-                    </form>
-
+                    <h5>{{__('Board')}}</h5>
+                </div>
+                <div class='card-body text-left'>
+                    @foreach($messages as $message)
+                    <p>
+                        <a href="{{route('kashikari.otherprofile',$kashikari->user_id)}}"><img src="{{asset('storage/post_images/'.$message->getUserIcon())}}" width=30px>{{$message->getUserName()}}</a>
+                        　　{{$message->msg}}</p>
+                    @endforeach
                 </div>
 
+
+
+
+                <div class='card-body text-center'>
+                    <!-- コメント表示 -->
+                    <form method='post'>
+                        @csrf
+                        <label for='msg'>{{__('Comment')}}</label>
+                        <input id='msg' type='text' name='msg' autofocus>
+                        <input type='submit' value='送信'>
+                    </form>
+                </div>
+
+
+
             </div>
-
-
-
         </div>
     </div>
-</div>
-@endsection
+    @endsection

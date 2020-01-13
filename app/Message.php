@@ -6,20 +6,27 @@ use Illuminate\Database\Eloquent\Model;
 
 class Message extends Model
 {
-    protected $fillable = ['send_data', 'msg', 'kashikari_id'];
+    protected $fillable = ['user_id', 'msg', 'kashikari_id'];
 
     public function kashikari()
     {
         return $this->belongsTo('App\Kashikari');
     }
 
-    public function getToUser()
+    public function user()
     {
-        return $this->kashikari()->user_id;
+        return $this->belongsTo('App\User');
     }
 
-    public function getMsg()
+    public function getUserName()
     {
-        return $this->msg;
+        return $this->user->name;
+    }
+
+
+    public function getUserIcon()
+    {
+        $pic = $this->user->pic;
+        return basename($pic);
     }
 }
