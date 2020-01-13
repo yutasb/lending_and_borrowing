@@ -7,8 +7,10 @@
             <div class="card">
                 <div class="card-header">
                     <h3><a href="{{route('kashikari.otherprofile',$kashikari->user_id)}}"><img src="{{asset('storage/post_images/'.$kashikari->getIcon())}}" width=50px></a>
-                        {{__($kashikari->title.''.$kashikari->category_id)}}
-                        <!-- borrow!入れてプライベートチャットに飛ばす-->
+                        {{$kashikari->title}}
+                        <span class='badge-info'>{{$kashikari->getCategoryName()}}</span>
+                    </h3>
+                    <!-- borrow!入れてプライベートチャットに飛ばす-->
 
 
 

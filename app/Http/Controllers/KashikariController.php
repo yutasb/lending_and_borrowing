@@ -26,9 +26,11 @@ class KashikariController extends Controller
         ]);
         $kashikari = new Kashikari;
         $kashikari->title = $request->title;
+        $kashikari->category_id = $request->category_id;
         $kashikari->place = $request->place;
         $kashikari->price = $request->price;
         $kashikari->comment = $request->comment;
+
         $filename = $request->file('pic1')->store('public/post_images');
         $kashikari->pic1 = basename($filename);
 
@@ -37,10 +39,12 @@ class KashikariController extends Controller
             $filename2->store('public/post_images');
             $kashikari->pic2 = basename($filename);
         }
-        if ($kashikari->pic3) {
-            $filename = $request->file('pic3')->store('public/post_images');
+        $filename3 = $request->file('pic3');
+        if ($filename3) {
+            $filename3->store('public/post_images');
             $kashikari->pic3 = basename($filename);
         }
+
         $kashikari->user_id = Auth::user()->id;
         $kashikari->save();
 
@@ -99,15 +103,33 @@ class KashikariController extends Controller
         $kashikari = Auth::user()->kashikaris()->find($id);
         return view('kashikari.edit', ['kashikari' => $kashikari]);
     }
+
     public function update(Request $request, $id)
     {
         if (!\ctype_digit($id)) {
             return redirect('/lent/new')->with('flash_message', __('Invalid operation was perfomed'));
         }
         $kashikari = Kashikari::find($id);
+
+        $filename = $request->file('pic1');
+        $filename->store('public/post_images');
+        $kashikari->pic1 = basename($filename);
+
+        $filename2 = $request->file('pic2');
+        if ($filename2) {
+            $filename2->store('public/post_images');
+            $kashikari->pic2 = basename($filename);
+        }
+        $filename3 = $request->file('pic3');
+        if ($filename3) {
+            $filename3->store('public/post_images');
+            $kashikari->pic3 = basename($filename);
+        }
+
         $kashikari->fill($request->all())->save();
         return redirect('/lent')->with('flash_message', __('Registerd.'));
     }
+
     public function delete($id)
     {
         if (!ctype_digit($id)) {
@@ -149,6 +171,24 @@ class KashikariController extends Controller
         $kashikaris = $users->kashikaris()->get();
         return view('kashikari.otherprofile', ['users' => $users, 'kashikaris' => $kashikaris]);
         // str_replace("検索を行う文字列", "置き換えを行う文字列", "対象の文字列");
+    }
+
+    public function getCategory()
+    {
+        $categories = config('category');
+        return view('kashikari.new')->with(['categories' => $categories]);
+    }
+
+    public function getCategoryEdit()
+    {
+        $categories = config('category');
+        return view('kashikari.edit')->with(['categories' => $categories]);
+    }
+
+    public function searchCategory()
+    {
+        $categories = config('category');
+        return view('kashikari.index')->with(['categories' => $categories]);
     }
 
 

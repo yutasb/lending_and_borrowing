@@ -26,18 +26,16 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="category_name" class="col-md-4 col-form-label text-md-right">{{ __('Category') }}</label>
-
+                            <label for="category_id" class="col-md-4 col-form-label text-md-right">{{ __('Category') }}</label>
                             <div class="col-md-6">
-                                <input id="category_name" type="text" class="form-control @error('category_name') is-invalid @enderror" name="category_name" value="{{ old('category_name') }}" autocomplete="category_name" autofocus>
-
-                                @error('category_name')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
+                                <select name='category_id'>
+                                    @foreach(config('category') as $category => $name)
+                                    <option value="{{ $category }}">{{$name}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
+
 
                         <div class="form-group row">
                             <label for="place" class="col-md-4 col-form-label text-md-right">{{ __('Place') }}</label>

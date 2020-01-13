@@ -1,12 +1,23 @@
 @extends('layouts.app')
 
 @section('content')
+
+
+<div class="col-sm-2">
+
+    @foreach(config('category') as $category => $name)
+    <a href='#'><input value="{{ $name }}" type='button' class='btn btn-outline-primary w-75'> </a> <br><br>
+    @endforeach
+
+</div>
+
+
 <div class="container">
     <h2>{{__('Lent List')}}</h2>
 
     <div class="row">
         @foreach($kashikaris as $kashikari)
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             <div class="card">
                 <div class="card-body  text-center">
                     <a href="{{ route('kashikari.show',$kashikari->id ) }}">

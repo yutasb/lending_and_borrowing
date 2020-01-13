@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Kashikari extends Model
 {
-    protected $fillable = ['title', 'place', 'price', 'comment', 'pic1', 'pic2', 'pic3'];
+    protected $fillable = ['title', 'category_id', 'place', 'price', 'comment', 'pic1', 'pic2', 'pic3'];
 
     public function user()
     {
@@ -31,5 +31,15 @@ class Kashikari extends Model
     public function messages()
     {
         return $this->hasMany('App\Message');
+    }
+
+    public function category()
+    {
+        return $this->belongsTo('App\Category');
+    }
+
+    public function getCategoryName()
+    {
+        return $this->category->name;
     }
 }
