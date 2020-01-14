@@ -25,12 +25,10 @@ Route::post('/lent/new', 'KashikariController@create');
 // 新規作成
 Route::get('/lent', 'KashikariController@index')->name('kashikari');
 // 一覧表示
-
 Route::get('/lent/category/{id}', 'KashikariController@search')->name('kashikari.search');
 //カテゴリ検索
 Route::get('/lent/search/title={title}', 'KashikariController@wordsearch')->name('kashikari.wordsearch');
 //ワード検索
-
 Route::get('/lent/{id}', 'KashikariController@show')->name('kashikari.show');
 // 投稿詳細表示
 Route::post('/lent/{id}', 'KashikariController@sendmsg');
@@ -49,11 +47,8 @@ Route::get('/users/{id}', 'KashikariController@otherprofile')->name('kashikari.o
 //他ユーザーのプロフィール表示
 
 
-
-
-
-// Route::get('/msg/{id}', 'KashikariController@msg')->name('kashikari.msg');
-// Route::post('/msg/{id}', 'KashikariController@showmsg');
+Route::get('/msg/{id}', 'ChatController@index')->name('chat.index');
+Route::post('/msg/{id}', 'ChatController@send');
 //プライベートチャット
 
 

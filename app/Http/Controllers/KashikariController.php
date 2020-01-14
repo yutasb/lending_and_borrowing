@@ -161,8 +161,6 @@ class KashikariController extends Controller
         $user->myself = $request->myself;
         $user->save();
 
-
-        // $user->fill($request->all())->save();
         return redirect('/mypage')->with('flash_message', __('Updated'));
     }
 
@@ -205,36 +203,4 @@ class KashikariController extends Controller
         $kashikaris = Kashikari::where('title',  'like', "%{$request->title}%")->get();
         return view('kashikari.index', ['kashikaris' => $kashikaris]);
     }
-
-
-
-
-
-
-
-
-    // ↓↓↓↓↓↓↓↓↓↓↓↓プライベートチャット↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-
-    //おそらくこのmsg($id)でとってくるのはmessagesのidであるため、だめ。本当にとってきたいのは、messagesのkashikari_idである。
-    // public function msg($id)
-    // {
-    //     $messages = Message::where('kashikari_id', $id)->get();  //これでkashikari_idとURIの{id}が一致しているレコードを取ってこられる。
-    //     return view('kashikari.msg', ['messages' => $messages]);
-    // }
-
-    // public function showmsg(Request $request, $id)
-    // {
-    //     $request->validate([
-    //         'msg' => 'required|string|max:255',
-    //     ]);
-    //     $messages = new Message;
-    //     $kashikaris = Kashikari::find($id);
-    //     $messages->borrower = Auth::user()->id;
-    //     $messages->lender = $kashikaris->user_id;
-    //     $messages->msg = $request->msg;
-    //     $messages->kashikari_id = $kashikaris->id;
-    //     $messages->save();
-
-    //     return redirect()->route('kashikari.msg', ['id' => $messages->kashikari_id]);
-    // }
 }

@@ -9,9 +9,9 @@
                     <h3><a href="{{route('kashikari.otherprofile',$kashikari->user_id)}}"><img src="{{asset('storage/post_images/'.$kashikari->getIcon())}}" width=50px></a>
                         {{$kashikari->title}}
                         <span class='badge-info'>{{$kashikari->getCategoryName()}}</span>
-                    </h3>
-                    <!-- borrow!入れてプライベートチャットに飛ばす-->
 
+                        <a href="{{route('chat.index',$kashikari->id)}}" class='btn btn-primary'>{{__('Borrow!')}}</a>
+                    </h3>
 
 
 

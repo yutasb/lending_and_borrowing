@@ -9,6 +9,13 @@
             <div class="card">
                 <div class="card-header">
                     {{__('Message')}}
+                    <div class='card-body text-left'>
+                        @foreach($chats as $chat)
+                        <p>
+                            <a href="{{route('kashikari.otherprofile',$chat->user_id)}}"><img src="{{asset('storage/post_images/'.$chat->getUserIcon())}}" width=30px>{{$chat->getUserName()}}</a>
+                            　　{{$chat->msg}}</p>
+                        @endforeach
+                    </div>
 
                 </div>
                 <div class='card-body text-center'>

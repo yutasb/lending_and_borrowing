@@ -42,4 +42,9 @@ class Kashikari extends Model
     {
         return $this->category->name;
     }
+
+    public function chats()
+    {
+        return $this->hasMany('App\Chat');
+    }
 }
