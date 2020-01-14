@@ -176,7 +176,7 @@ a {
 
 a:hover {
     color: #1d68a7;
-    text-decoration: underline;
+    /* text-decoration: underline; */
 }
 
 a:not([href]) {
@@ -1092,6 +1092,7 @@ pre code {
         -webkit-box-flex: 0;
         flex: 0 0 75%;
         max-width: 75%;
+        
     }
 
     .col-sm-10 {
