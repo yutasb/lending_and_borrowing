@@ -5,6 +5,11 @@
 
 <div class="col-sm-2">
 
+    <form method='get' action="{{ route('kashikari.wordsearch','title') }}">
+        <input type='text' name='title'><input type='submit' value='検索'>
+    </form><br><br>
+
+    <a href="/lent"> <input type=button class='btn btn-outline-primary w-75' value='すべて'></a><br><br>
     @foreach(config('category') as $category=>$name )
     <a href="{{route('kashikari.search',$category)}}"><input value="{{ $name }}" type='button' class='btn btn-outline-primary w-75'> </a> <br><br>
     @endforeach

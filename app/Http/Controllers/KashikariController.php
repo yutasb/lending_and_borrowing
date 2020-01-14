@@ -199,6 +199,13 @@ class KashikariController extends Controller
         return view('kashikari.index', ['kashikaris' => $kashikaris]);
     }
 
+    public function wordsearch(Request $request)
+    {
+
+        $kashikaris = Kashikari::where('title',  'like', "%{$request->title}%")->get();
+        return view('kashikari.index', ['kashikaris' => $kashikaris]);
+    }
+
 
 
 
