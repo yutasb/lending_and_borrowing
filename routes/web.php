@@ -46,10 +46,13 @@ Route::post('users/{id}/edit', 'KashikariController@myprofupdate')->name('kashik
 Route::get('/users/{id}', 'KashikariController@otherprofile')->name('kashikari.otherprofile');
 //他ユーザーのプロフィール表示
 
-
+Route::get('/lent/borrow/{id}', 'ChatController@confirm')->name('chat.confirm');
 Route::get('/msg/{id}', 'ChatController@index')->name('chat.index');
 Route::post('/msg/{id}', 'ChatController@send');
+
 //プライベートチャット
+
+
 
 
 // Route::get('/lent/{id}/likes', 'LikesController@store');

@@ -26,7 +26,7 @@
                         @csrf
                         <label for='msg'>{{__('Comment')}}</label>
                         <input id='msg' type='text' name='msg' autofocus>
-                        <input type='submit' value='送信'>
+                        <input type='submit' value="{{__('send')}}">
                     </form>
                 </div>
             </div>

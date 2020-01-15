@@ -6,9 +6,20 @@ use App\Chat;
 use App\Kashikari;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ChatController extends Controller
 {
+    public function confirm($id)
+    {
+        $param = ['kashikari_using' => '1'];
+        $kashikari = Kashikari::find($id);
+        Kashikari::where('id', $id)->update($param);
+        return view('kashikari.borrowconfirm', ['kashikari' => $kashikari]);
+    }
+
+
+
     public function index($id)
     {
         $kashikari = Kashikari::find($id);
