@@ -36,14 +36,14 @@
         <div class="col-sm-4">
             <div class="card">
                 <div class="card-body text-center">
-                    <a href="{{ route('kashikari.show',$kashikari->id ) }}">
+                    <a href="{{ route('chat.index',$kashikari->id ) }}">
                         <img src="{{asset('storage/post_images/'.$kashikari->pic1)}}" alt='イメージ画像' width=180px>
                         <h5 class="card-title text-center">
                             {{$kashikari->title}}　
                         </h5>
-                        <div class="card-img-overlay">　
-                            <h2 class='card-text'>{{__('Using')}}</h2>
-                        </div>
+                        <p class='card body text-left'>
+
+                        </p>
                     </a>
                 </div>
             </div>
@@ -52,5 +52,5 @@
         @endif
         @endforeach
     </div>
-</div>
-@endsection
+
+    @endsection

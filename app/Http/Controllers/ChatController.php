@@ -12,7 +12,7 @@ class ChatController extends Controller
 {
     public function confirm($id)
     {
-        $param = ['kashikari_using' => '1'];
+        $param = ['kashikari_using' => '1', 'borrower' => Auth::user()->id];
         $kashikari = Kashikari::find($id);
         Kashikari::where('id', $id)->update($param);
         return view('kashikari.borrowconfirm', ['kashikari' => $kashikari]);

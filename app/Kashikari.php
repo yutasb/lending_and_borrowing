@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Kashikari extends Model
 {
-    protected $fillable = ['title', 'category_id', 'place', 'price', 'comment', 'pic1', 'pic2', 'pic3'];
+    protected $fillable = ['title', 'category_id', 'place', 'price', 'comment', 'borrower', 'pic1', 'pic2', 'pic3'];
 
     public function user()
     {
@@ -20,8 +20,6 @@ class Kashikari extends Model
         $pic = $this->user->pic;
         return basename($pic);
     }
-
-
 
     public function likes()
     {
@@ -47,4 +45,9 @@ class Kashikari extends Model
     {
         return $this->hasMany('App\Chat');
     }
+
+    // public function getMsg()
+    // {
+    //     return $this->chats->msg;
+    // }
 }
