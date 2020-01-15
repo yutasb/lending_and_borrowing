@@ -1092,7 +1092,6 @@ pre code {
         -webkit-box-flex: 0;
         flex: 0 0 75%;
         max-width: 75%;
-        
     }
 
     .col-sm-10 {
@@ -8845,10 +8844,9 @@ button.bg-dark:focus {
     box-shadow: none !important;
 }
 
-.w-12{
-    width:12% !important;
+.w-12 {
+    width: 12% !important;
 }
-
 
 .w-25 {
     width: 25% !important;
@@ -11440,4 +11438,6 @@ a.text-dark:focus {
     }
 
     /* 追加 */
+
+
 }

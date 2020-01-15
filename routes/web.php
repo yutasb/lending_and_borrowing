@@ -15,7 +15,7 @@ use App\Http\Controllers\KashikariController;
 
 Auth::routes();
 //認証機能に関するrootはこれにまとめられている。
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'kashikariController@index')->name('kashikari');
 Route::get('/', function () {
     return view('welcome');
 });
@@ -45,11 +45,9 @@ Route::post('users/{id}/edit', 'KashikariController@myprofupdate')->name('kashik
 // プロフィール編集
 Route::get('/users/{id}', 'KashikariController@otherprofile')->name('kashikari.otherprofile');
 //他ユーザーのプロフィール表示
-
 Route::get('/lent/borrow/{id}', 'ChatController@confirm')->name('chat.confirm');
 Route::get('/msg/{id}', 'ChatController@index')->name('chat.index');
 Route::post('/msg/{id}', 'ChatController@send');
-
 //プライベートチャット
 
 

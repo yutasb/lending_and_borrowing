@@ -18,8 +18,6 @@ class ChatController extends Controller
         return view('kashikari.borrowconfirm', ['kashikari' => $kashikari]);
     }
 
-
-
     public function index($id)
     {
         $kashikari = Kashikari::find($id);

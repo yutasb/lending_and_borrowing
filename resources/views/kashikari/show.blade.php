@@ -10,8 +10,12 @@
                         <h3><a href="{{route('kashikari.otherprofile',$kashikari->user_id)}}"><img src="{{asset('storage/post_images/'.$kashikari->getIcon())}}" width=50px></a>
                             {{$kashikari->title}}
                             <span class='badge-info'>{{$kashikari->getCategoryName()}}</span>
-
+                            @if($kashikari->kashikari_using == 1)
+                            <input name='using' type='btn' class='btn btn-danger w-12' value="{{__('Using')}}">
+                            @else
                             <a href="{{route('chat.confirm',$kashikari->id)}}"><input name='using' type='btn' class='btn btn-primary w-12' value="{{__('Borrow!')}}"></a>
+                            @endif
+
                         </h3>
                     </form>
                 </div>

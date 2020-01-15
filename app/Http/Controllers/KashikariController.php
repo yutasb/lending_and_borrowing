@@ -61,6 +61,7 @@ class KashikariController extends Controller
 
         return view('kashikari.index', ['kashikaris' => $kashikaris]);
         //index.blade.phpの$kashikaris部分が、$kashikari(今回の場合Kashikari::all)に置き換えられる。
+
     }
 
     public function show($id)
