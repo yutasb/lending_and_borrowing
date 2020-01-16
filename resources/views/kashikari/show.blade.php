@@ -7,6 +7,7 @@
             <div class="card">
                 <div class="card-header">
                     <form method='post'>
+                        @csrf
                         <h3><a href="{{route('kashikari.otherprofile',$kashikari->user_id)}}"><img src="{{asset('storage/post_images/'.$kashikari->getIcon())}}" width=50px></a>
                             {{$kashikari->title}}
                             <span class='badge-info'>{{$kashikari->getCategoryName()}}</span>
@@ -43,6 +44,10 @@
                     <p>{{$kashikari->price}}円　/ 1泊</p>
                     <p>{{$kashikari->comment}}</p>
 
+                    <form method='post' action="{{route('like.off',$kashikari->id)}}">
+                        @csrf
+                        <input type='submit' name='like' class='btn btn-warning' value="{{__('Like')}}">
+                    </form>
                 </div>
 
                 <!-- 公開掲示板 -->
@@ -66,6 +71,7 @@
                         <input type='submit' value="{{__('send')}}">
                     </form>
                 </div>
+
 
 
 

@@ -35,7 +35,7 @@
                         </h5>
 
                         <div class="card-img-overlay">　
-                            <h2 class='card-text'>{{__('Using')}}</h2>
+                            <h2 class='card-text '>{{__('Using')}}</h2>
                         </div>
                     </a>
                 </div>

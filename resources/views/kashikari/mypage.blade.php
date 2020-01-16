@@ -48,7 +48,7 @@
                             <!-- そのチャットの最後のメッセージ表示したい -->
                         </p>
                     </a>
-                    <a href="{{route('kashikari.confirm',$kashikari->id)}}">
+                    <a href="{{route('return.confirm',$kashikari->id)}}">
                         <input name='return' type='button' class='btn btn-warning' value="{{__('Return')}}">
                     </a>
                     </a>

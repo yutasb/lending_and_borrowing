@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <h2>Reurn , OK?</h2>
             <form method='post'>
-                <a href="{{route('kashikari.return')}}"><input name='return' type='btn' class='btn btn-primary w-25' value="{{__('OK!')}}"></a>
+                <a href="{{route('return.return')}}"><input name='return' type='btn' class='btn btn-primary w-25' value="{{__('OK!')}}"></a>
             </form>
         </div>
     </div>

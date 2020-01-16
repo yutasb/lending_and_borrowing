@@ -2,30 +2,31 @@
 
 namespace App\Http\Controllers;
 
+use App\Kashikari;
+use App\Like;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LikesController extends Controller
 {
-    public function store(Request $request, $kashikariId)
+    public function off($id)
     {
-        Like::create(
-          array(
-            'user_id' => Auth::user()->id,
-            'kashikari_id' => $kashikariId
-          )
-        );
+        $kashikari = Kashikari::find($id);
+        $likeJudge = Like::where('kashikari_id', $id)->get();
 
-        $like = Like::findOrFail($KashikariId);
+        if ($likeJudge->isEmpty()) {
 
-        return redirect()
-             ->action('KashikariController@index', $like->id);
-    }
+            $like = new Like();
+            $like->user_id = Auth::user()->id;
+            $like->kashikari_id = $kashikari->id;
+            $like->save();
 
-    public function destroy($kashikariId, $likeId) {
-      $kashikari = Post::findOrFail($likeId);
-      $kashikari->like_by()->findOrFail($likeId)->delete();
+            return redirect()->route('kashikari.show', ['id' => $like->kashikari_id])->with('flash_message', __('Like'));
+        } else {
 
-      return redirect()
-             ->action('KashikariController@index', $like->id);
+            $kashikari->likes()->delete();
+
+            return redirect()->route('kashikari.show', ['id' => $kashikari->id])->with('flash_message', __('UnLike'));
+        }
     }
 }
