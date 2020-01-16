@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Chat;
 use Illuminate\Http\Request;
 use App\Kashikari;
 use App\Message;
@@ -92,7 +93,8 @@ class KashikariController extends Controller
     public function mypage()
     {
         $user = Auth::user();
-        $kashikaris = Auth::user()->kashikaris()->get();
+        $kashikaris = Kashikari::get();
+
         return view('kashikari.mypage', ['kashikaris' => $kashikaris, 'user' => $user, 'pic' => str_replace('public/', 'storage/', Auth::user()->pic),]);
         // str_replace("検索を行う文字列", "置き換えを行う文字列", "対象の文字列");
     }

@@ -13,6 +13,7 @@
     <h2>{{__('My Lent List')}}</h2>
     <div class="row">
         @foreach($kashikaris as $kashikari)
+        @if($kashikari->user_id == Auth::user()->id )
         @if($kashikari->kashikari_using == 0)
         <div class="col-sm-4">
             <div class="card">
@@ -25,13 +26,15 @@
             </div>
         </div>
         @endif
+        @endif
         @endforeach
     </div>
     <br><br><br>
 
-    <h2>{{__('Using')}}</h2>
+    <h2>{{__('Using(借りられている)')}}</h2>
     <div class="row">
         @foreach($kashikaris as $kashikari)
+        @if($kashikari->user_id == Auth::user()->id )
         @if($kashikari->kashikari_using == 1)
         <div class="col-sm-4">
             <div class="card">
@@ -42,15 +45,41 @@
                             {{$kashikari->title}}　
                         </h5>
                         <p class='card body text-left'>
-
+                            <!-- そのチャットの最後のメッセージ表示したい -->
                         </p>
+                    </a>
+                    <a href="{{route('kashikari.confirm',$kashikari->id)}}">
+                        <input name='return' type='button' class='btn btn-warning' value="{{__('Return')}}">
+                    </a>
                     </a>
                 </div>
             </div>
         </div>
+        @endif
+        @endif
+        @endforeach
+    </div>
+    <br><br><br>
 
+    <h2>{{__('Borrow(借りている）')}}</h2>
+    <div class="row">
+        @foreach($kashikaris as $kashikari)
+        @if ($kashikari -> borrower == Auth::user()->id)
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <a href="{{ route('chat.index',$kashikari->id ) }}">
+                        <img src="{{asset('storage/post_images/'.$kashikari->pic1)}}" alt='イメージ画像' width=180px>
+                        <h5 class="card-title text-center">
+                            {{$kashikari->title}}　
+                        </h5>
+                    </a>
+                </div>
+            </div>
+        </div>
         @endif
         @endforeach
     </div>
 
-    @endsection
+</div>
+@endsection

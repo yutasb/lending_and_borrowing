@@ -46,8 +46,8 @@ class Kashikari extends Model
         return $this->hasMany('App\Chat');
     }
 
-    // public function getMsg()
-    // {
-    //     return $this->chats->msg;
-    // }
+    public function getMsg()
+    {
+        return $this->chats->msg;
+    }
 }
