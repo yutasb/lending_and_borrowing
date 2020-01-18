@@ -47,5 +47,7 @@ class Kashikari extends Model
     }
 
     public function likeJudge()
-    { }
+    {
+        return $this->likes->user_id;
+    }
 }

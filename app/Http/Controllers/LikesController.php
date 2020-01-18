@@ -29,4 +29,7 @@ class LikesController extends Controller
             return redirect()->route('kashikari.show', ['id' => $kashikari->id])->with('flash_message', __('UnLike'));
         }
     }
+
+    public function Page($id)
+    { }
 }

@@ -12,6 +12,7 @@
 */
 
 use App\Http\Controllers\KashikariController;
+use App\Http\Controllers\LikesController;
 
 Auth::routes();
 //認証機能に関するrootはこれにまとめられている。

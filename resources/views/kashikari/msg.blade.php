@@ -24,8 +24,8 @@
                     <!-- コメント表示 -->
                     <form method='post'>
                         @csrf
-                        <label for='msg'>{{__('Comment')}}</label>
-                        <input id='msg' type='text' name='msg' autofocus>
+                        <label for='msg'></label>
+                        <input id='msg' type='text' placeholder="{{__('Enter your message')}}" name='msg' class='w-50' autofocus>
                         <input type='submit' value="{{__('send')}}">
                     </form>
                 </div>

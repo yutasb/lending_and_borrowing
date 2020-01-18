@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Chat;
 use Illuminate\Http\Request;
 use App\Kashikari;
+use App\Like;
 use App\Message;
 use App\User;
 
@@ -71,6 +72,7 @@ class KashikariController extends Controller
         }
         $kashikari = Kashikari::find($id);
         $messages = Message::where('kashikari_id', $id)->get();
+
         return view('kashikari.show', ['kashikari' => $kashikari], ['messages' => $messages]);
     }
 
@@ -93,6 +95,7 @@ class KashikariController extends Controller
     {
         $user = Auth::user();
         $kashikaris = Kashikari::get();
+
 
         return view('kashikari.mypage', ['kashikaris' => $kashikaris, 'user' => $user, 'pic' => str_replace('public/', 'storage/', Auth::user()->pic),]);
         // str_replace("検索を行う文字列", "置き換えを行う文字列", "対象の文字列");
@@ -120,10 +123,10 @@ class KashikariController extends Controller
         $kashikari->price = $request->price;
         $kashikari->comment = $request->comment;
 
-        $filename = $request->file('pic1')->store('public/post_images');
-        $kashikari->pic1 = basename($filename);
-
-
+        if ($request->file('pic1')) {
+            $filename = $request->file('pic1')->store('public/post_images');
+            $kashikari->pic1 = basename($filename);
+        }
 
         if ($request->file('pic2')) {
             $filename2 = $request->file('pic2')->store('public/post_images');

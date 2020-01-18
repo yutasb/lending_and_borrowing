@@ -52,14 +52,16 @@
                         </li>
                         @endif
                         @else
-                        <li class='nav-item dropdown'><a id='navbarDropdown' class='nav-link' href='/lent' role='button'>Lent List</a></li>
+                        <li class='nav-item dropdown'><a id='navbarDropdown' class='nav-link' href='/lent' role='button'>{{__('Lent List')}}</a></li>
 
-                        <li class='nav-item dropdown'><a id="navbarDropdown" class="nav-link " href='/lent/new' role='button'>New</a></li>
+                        <li class='nav-item dropdown'><a id="navbarDropdown" class="nav-link " href='/lent/new' role='button'>{{__('New')}}</a></li>
 
-                        <li class='nav-item dropdown'><a id='navbarDropdown' class='nav-link' href="{{route('kashikari.mypage')}}" role='button'>Mypage</a></li>
+
+
+                        <li class='nav-item dropdown'><a id='navbarDropdown' class='nav-link' href="{{route('kashikari.mypage')}}" role='button'>{{__('Mypage')}}</a></li>
 
                         <li class='nav-item dropdown'><a id='navbarDropdown' class='nav-link' href="{{route('logout')}}" role='button' onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">Logout</a>
+                                                     document.getElementById('logout-form').submit();">{{__('Logout')}}</a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form>
