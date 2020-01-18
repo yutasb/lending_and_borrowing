@@ -52,32 +52,19 @@
                         </li>
                         @endif
                         @else
+                        <li class='nav-item dropdown'><a id='navbarDropdown' class='nav-link' href='/lent' role='button'>Lent List</a></li>
+
                         <li class='nav-item dropdown'><a id="navbarDropdown" class="nav-link " href='/lent/new' role='button'>New</a></li>
 
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ $user->name }} <span class="caret"></span>
-                            </a>
+                        <li class='nav-item dropdown'><a id='navbarDropdown' class='nav-link' href="{{route('kashikari.mypage')}}" role='button'>Mypage</a></li>
 
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('kashikari.mypage') }}" onclick="event.preventDefault();
-                                                     document.getElementById('mypage-form').submit();">
-                                    {{ __('mypage') }}
-                                </a>
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
-
-                                <form id="mypage-form" action="{{ route('kashikari.mypage') }}" method="GET" style="display: none;">
-
-                                </form>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
-                            </div>
+                        <li class='nav-item dropdown'><a id='navbarDropdown' class='nav-link' href="{{route('logout')}}" role='button' onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">Logout</a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
                         </li>
+
                         @endguest
                     </ul>
                 </div>

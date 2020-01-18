@@ -23,7 +23,7 @@ class KashikariController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'place' => 'required|string|max:255',
-            'price' => 'required|string|max:255',
+            'price' => 'required|integer',
             'comment' => 'required|string|max:255',
         ]);
         $kashikari = new Kashikari;
@@ -36,15 +36,15 @@ class KashikariController extends Controller
         $filename = $request->file('pic1')->store('public/post_images');
         $kashikari->pic1 = basename($filename);
 
-        $filename2 = $request->file('pic2');
-        if ($filename2) {
-            $filename2->store('public/post_images');
-            $kashikari->pic2 = basename($filename);
+
+        if ($request->file('pic2')) {
+            $filename2 = $request->file('pic2')->store('public/post_images');
+            $kashikari->pic2 = basename($filename2);
         }
-        $filename3 = $request->file('pic3');
-        if ($filename3) {
-            $filename3->store('public/post_images');
-            $kashikari->pic3 = basename($filename);
+
+        if ($request->file('pic3')) {
+            $filename3 = $request->file('pic3')->store('public/post_images');
+            $kashikari->pic3 = basename($filename3);
         }
 
         $kashikari->user_id = Auth::user()->id;
@@ -53,7 +53,6 @@ class KashikariController extends Controller
 
         return redirect('/lent')->with('flash_message', __('Registered.'));
     }
-
 
     public function index()
     {
@@ -115,23 +114,30 @@ class KashikariController extends Controller
         }
         $kashikari = Kashikari::find($id);
 
-        $filename = $request->file('pic1');
-        $filename->store('public/post_images');
+        $kashikari->title = $request->title;
+        $kashikari->category_id = $request->category_id;
+        $kashikari->place = $request->place;
+        $kashikari->price = $request->price;
+        $kashikari->comment = $request->comment;
+
+        $filename = $request->file('pic1')->store('public/post_images');
         $kashikari->pic1 = basename($filename);
 
-        $filename2 = $request->file('pic2');
-        if ($filename2) {
-            $filename2->store('public/post_images');
-            $kashikari->pic2 = basename($filename);
-        }
-        $filename3 = $request->file('pic3');
-        if ($filename3) {
-            $filename3->store('public/post_images');
-            $kashikari->pic3 = basename($filename);
+
+
+        if ($request->file('pic2')) {
+            $filename2 = $request->file('pic2')->store('public/post_images');
+            $kashikari->pic2 = basename($filename2);
         }
 
-        $kashikari->fill($request->all())->save();
-        return redirect('/lent')->with('flash_message', __('Registerd.'));
+        if ($request->file('pic3')) {
+            $filename3 = $request->file('pic3')->store('public/post_images');
+            $kashikari->pic3 = basename($filename3);
+        }
+
+        $kashikari->user_id = Auth::user()->id;
+        $kashikari->save();
+        return redirect('/lent')->with('flash_message', __('Registered.'));
     }
 
     public function delete($id)
@@ -185,25 +191,5 @@ class KashikariController extends Controller
     {
         $categories = config('category');
         return view('kashikari.edit')->with(['categories' => $categories]);
-    }
-
-    public function searchCategory()
-    {
-        $categories = config('category');
-        return view('kashikari.index')->with(['categories' => $categories]);
-    }
-
-
-    public function search($id)
-    {
-        $kashikaris = Kashikari::where('category_id', $id)->get();
-        return view('kashikari.index', ['kashikaris' => $kashikaris]);
-    }
-
-    public function wordsearch(Request $request)
-    {
-
-        $kashikaris = Kashikari::where('title',  'like', "%{$request->title}%")->get();
-        return view('kashikari.index', ['kashikaris' => $kashikaris]);
     }
 }

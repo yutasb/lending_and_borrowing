@@ -45,4 +45,7 @@ class Kashikari extends Model
     {
         return $this->hasMany('App\Chat');
     }
+
+    public function likeJudge()
+    { }
 }
