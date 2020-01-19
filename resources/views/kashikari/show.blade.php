@@ -20,7 +20,9 @@
                         </h3>
                     </form>
                 </div>
-
+                <div class="card-body text-left">
+                    <span class='badge-info'>{{$kashikari->method->name}}</span>
+                </div>
                 <div class='card-body text-center'>
                     @if($kashikari->pic1 == null)
                     <img src="/storage/post_images/noimage.png" width=150px>
@@ -42,7 +44,8 @@
 
                     <p>{{$kashikari->place}}</p>
                     <p>{{$kashikari->price}}円　/ 1泊</p>
-                    <p>{{$kashikari->comment}}</p>
+                    <p>{!! nl2br(e($kashikari->comment))!!}</p>
+
 
                     <form method='post' action="{{route('like.off',$kashikari->id)}}">
                         @csrf

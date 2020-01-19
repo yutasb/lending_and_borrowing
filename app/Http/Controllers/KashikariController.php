@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Kashikari;
 use App\Like;
 use App\Message;
+use App\Method;
 use App\User;
 
 use Illuminate\Support\Facades\Auth;
@@ -33,6 +34,7 @@ class KashikariController extends Controller
         $kashikari->place = $request->place;
         $kashikari->price = $request->price;
         $kashikari->comment = $request->comment;
+        $kashikari->method_id = $request->method_id;
 
         $filename = $request->file('pic1')->store('public/post_images');
         $kashikari->pic1 = basename($filename);
@@ -59,7 +61,6 @@ class KashikariController extends Controller
     {
         $kashikaris = Kashikari::all();
         // 全レコードを取得
-
         return view('kashikari.index', ['kashikaris' => $kashikaris]);
         //index.blade.phpの$kashikaris部分が、$kashikari(今回の場合Kashikari::all)に置き換えられる。
 
@@ -122,6 +123,7 @@ class KashikariController extends Controller
         $kashikari->place = $request->place;
         $kashikari->price = $request->price;
         $kashikari->comment = $request->comment;
+        $kashikari->method_id = $request->method_id;
 
         if ($request->file('pic1')) {
             $filename = $request->file('pic1')->store('public/post_images');
@@ -140,7 +142,7 @@ class KashikariController extends Controller
 
         $kashikari->user_id = Auth::user()->id;
         $kashikari->save();
-        return redirect('/lent')->with('flash_message', __('Registered.'));
+        return redirect('/lent')->with('flash_message', __('Updated'));
     }
 
     public function delete($id)

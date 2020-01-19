@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Kashikari extends Model
 {
-    protected $fillable = ['title', 'category_id', 'place', 'price', 'comment', 'borrower', 'pic1', 'pic2', 'pic3'];
+    protected $fillable = ['title', 'category_id', 'method_id', 'place', 'price', 'comment', 'borrower', 'pic1', 'pic2', 'pic3',];
 
     public function user()
     {
@@ -31,6 +31,16 @@ class Kashikari extends Model
         return $this->hasMany('App\Message');
     }
 
+    public function chats()
+    {
+        return $this->hasMany('App\Chat');
+    }
+
+    public function likeJudge()
+    {
+        return $this->likes->user_id;
+    }
+
     public function category()
     {
         return $this->belongsTo('App\Category');
@@ -41,13 +51,9 @@ class Kashikari extends Model
         return $this->category->name;
     }
 
-    public function chats()
-    {
-        return $this->hasMany('App\Chat');
-    }
 
-    public function likeJudge()
+    public function method()
     {
-        return $this->likes->user_id;
+        return $this->belongsTo('App\Method');
     }
 }

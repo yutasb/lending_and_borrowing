@@ -39,6 +39,17 @@
                             </div>
                         </div>
 
+                        <div class=" form-group row">
+                            <label for="method_id" class="col-md-4 col-form-label text-md-right">{{ __('Method') }}</label>
+                            <div class="col-md-6">
+                                <select name='method_id'>
+                                    @foreach(config('method') as $method => $name)
+                                    <option value="{{ $method }}">{{$name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
 
 
                         <div class="form-group row">
@@ -89,7 +100,9 @@
                             <label for="pic1" class="col-md-4 col-form-label text-md-right">{{ __('pic1')}}</label>
 
                             <div class="col-md-6">
-                                <input id="pic1" type="file" class="form-control-file @error('pic1') is-invalid @enderror" name="pic1" value="{{ old('pic1') }}">
+                                <img src="{{asset('storage/post_images/'.$kashikari->pic1)}}" alt='イメージ画像' width=180px>
+                                <input id="pic1" type="file" class="form-control-file @error('pic1') is-invalid @enderror" name="pic1" value="{{$kashikari->pic1}}">
+
 
                                 @error('pic1')
                                 <span class="invalid-feedback" role="alert">
@@ -101,22 +114,14 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
                         <div class="form-group row">
                             <label for="pic2" class="col-md-4 col-form-label text-md-right">{{ __('pic2')}}</label>
 
                             <div class="col-md-6">
+                                @if($kashikari->pic2 !== null)
+                                <img src="{{asset('storage/post_images/'.$kashikari->pic2)}}" alt='イメージ画像1' width=150px>
+                                @endif
+
                                 <input id="pic2" type="file" class="form-control-file @error('comment') is-invalid @enderror" name="pic2" value="{{ $kashikari->pic2 }}">
 
                                 @error('pic2')
@@ -131,8 +136,11 @@
                             <label for="pic3" class="col-md-4 col-form-label text-md-right">{{ __('pic3')}}</label>
 
                             <div class="col-md-6">
-                                <input id="pic3" type="file" class="form-control-file @error('comment') is-invalid @enderror" name="pic3" value="{{ $kashikari->pic3 }}">
+                                @if($kashikari->pic3 !== null)
+                                <img src="{{asset('storage/post_images/'.$kashikari->pic3)}}" alt='イメージ画像1' width=150px>
+                                @endif
 
+                                <input id="pic3" type="file" class="form-control-file @error('comment') is-invalid @enderror" name="pic3" value="{{ $kashikari->pic3 }}">
                                 @error('pic3')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -150,8 +158,6 @@
                             </div>
                         </div>
                     </form>
-                    <br>
-
                     <div class='col-sm-6 offset-md-4'>
                         <form action="{{route('kashikari.delete',$kashikari->id)}}" method='post' class='d-line'>
                             @csrf

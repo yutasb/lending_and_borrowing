@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Kashikari;
+use App\Method;
 use Illuminate\Http\Request;
 
 class SearchController extends Controller
@@ -15,11 +16,18 @@ class SearchController extends Controller
     }
 
 
-    public function search($id)
+    public function categorysearch($id)
     {
         $kashikaris = Kashikari::where('category_id', $id)->get();
         $categories = Category::find($id);
         return view('kashikari.index', ['kashikaris' => $kashikaris, 'categories' => $categories]);
+    }
+
+    public function methodsearch($id)
+    {
+        $kashikaris = Kashikari::where('method_id', $id)->get();
+        $methods = Method::find($id);
+        return view('kashikari.index', ['kashikaris' => $kashikaris, 'methods' => $methods]);
     }
 
     public function wordsearch(Request $request)

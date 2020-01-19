@@ -15,7 +15,7 @@
                             <label for="title" class="col-md-4 col-form-label text-md-right">{{ __('Title') }}</label>
 
                             <div class="col-md-6">
-                                <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title') }}" autocomplete="title" autofocus>
+                                <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title') }}" placeholder="{{__('Example Bike')}}" autocomplete="title" autofocus>
 
                                 @error('title')
                                 <span class="invalid-feedback" role="alert">
@@ -25,7 +25,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class=" form-group row">
                             <label for="category_id" class="col-md-4 col-form-label text-md-right">{{ __('Category') }}</label>
                             <div class="col-md-6">
                                 <select name='category_id'>
@@ -37,11 +37,24 @@
                         </div>
 
 
+                        <div class=" form-group row">
+                            <label for="method_id" class="col-md-4 col-form-label text-md-right">{{ __('Method') }}</label>
+                            <div class="col-md-6">
+                                <select name='method_id'>
+                                    @foreach(config('method') as $method => $name)
+                                    <option value="{{ $method }}">{{$name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+
+
                         <div class="form-group row">
                             <label for="place" class="col-md-4 col-form-label text-md-right">{{ __('Place') }}</label>
 
                             <div class="col-md-6">
-                                <input id="place" type="text" class="form-control @error('place') is-invalid @enderror" name="place" value="{{ old('place') }}" autocomplete="place" autofocus>
+                                <input id="place" type="text" class="form-control @error('place') is-invalid @enderror" name="place" value="{{ old('place') }}" placeholder="{{__('Example Tokyo')}}" autocomplete="place" autofocus>
 
                                 @error('place')
                                 <span class="invalid-feedback" role="alert">
@@ -55,7 +68,7 @@
                             <label for="price" class="col-md-4 col-form-label text-md-right">{{ __('Price') }}</label>
 
                             <div class="col-md-6">
-                                <input id="price" type="text" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}" autocomplete="price" autofocus>
+                                <input id="price" type="text" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}" autocomplete="price" placeholder="{{__('Example 500')}}" autofocus>
 
                                 @error('price')
                                 <span class="invalid-feedback" role="alert">
@@ -69,7 +82,7 @@
                             <label for="comment" class="col-md-4 col-form-label text-md-right">{{ __('comment')}}</label>
 
                             <div class="col-md-6">
-                                <textarea id="comment" type="text" class="form-control @error('comment') is-invalid @enderror" name="comment" autocomplete="comment" autofocus>{{ old('comment') }}</textarea>
+                                <textarea id="comment" type="text" cols="40" rows="5" class="form-control @error('comment') is-invalid @enderror" name="comment" placeholder="{{__('Example Good Condition')}}" autocomplete="comment" autofocus>{{ old('comment') }}</textarea>
 
                                 @error('comment')
                                 <span class="invalid-feedback" role="alert">

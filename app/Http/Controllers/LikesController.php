@@ -21,12 +21,12 @@ class LikesController extends Controller
             $like->kashikari_id = $kashikari->id;
             $like->save();
 
-            return redirect()->route('kashikari.show', ['id' => $like->kashikari_id])->with('flash_message', __('Like'));
+            return redirect()->route('kashikari.show', ['id' => $like->kashikari_id])->with('flash_message', __('Like Register'));
         } else {
 
             $kashikari->likes()->delete();
 
-            return redirect()->route('kashikari.show', ['id' => $kashikari->id])->with('flash_message', __('UnLike'));
+            return redirect()->route('kashikari.show', ['id' => $kashikari->id])->with('flash_message', __('Like Release'));
         }
     }
 

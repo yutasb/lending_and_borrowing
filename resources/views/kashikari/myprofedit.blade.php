@@ -60,7 +60,7 @@
                             <label for="myself" class="col-md-4 col-form-label text-md-right">{{ __('myself') }}</label>
 
                             <div class="col-md-6">
-                                <textarea id="myself" type="text" class="form-control @error('myself') is-invalid @enderror" name="myself" autocomplete="myself" autofocus>{{ $user->myself }}</textarea>
+                                <textarea id="myself" type="text" rows='5' cols='40' class="form-control @error('myself') is-invalid @enderror" name="myself" autocomplete="myself" autofocus>{{ $user->myself }}</textarea>
 
                                 @error('myself')
                                 <span class="invalid-feedback" role="alert">
