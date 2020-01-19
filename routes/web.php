@@ -30,9 +30,12 @@ Route::get('/lent/category/{id}', 'SearchController@categorysearch')->name('kash
 //カテゴリ検索
 Route::get('/lent/method/{id}', 'SearchController@methodsearch')->name('kashikari.methodsearch');
 //渡す方法検索
+Route::get('/lent/method={method}/category={category}', 'SearchController@doublesearch')->name('kashikari.doublesearch');
+//カテゴリ・渡す方法複数条件検索
+
+
 Route::get('/lent/search/title={title}', 'SearchController@wordsearch')->name('kashikari.wordsearch');
 //ワード検索
-
 Route::get('/lent/{id}', 'KashikariController@show')->name('kashikari.show');
 // 投稿詳細表示
 Route::post('/lent/{id}', 'KashikariController@sendmsg')->middleware('check');
