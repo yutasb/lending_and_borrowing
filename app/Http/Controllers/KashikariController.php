@@ -108,7 +108,7 @@ class KashikariController extends Controller
             return redirect('/lent/new')->with('flash_message', __('Invalid operation was perfomed'));
         }
         $kashikari = Auth::user()->kashikaris()->find($id);
-        return view('kashikari.edit', ['kashikari' => $kashikari]);
+        return view('kashikari.edit', ['kashikari' => $kashikari,]);
     }
 
     public function update(Request $request, $id)

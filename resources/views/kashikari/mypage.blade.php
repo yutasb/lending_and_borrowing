@@ -6,7 +6,7 @@
     <img src="{{$pic}}" alt='icon' width=150px>
 
     <h3>{{$user->name}}</h3>
-    
+
     <p>{!! nl2br(e($user->myself)) !!}</p>
     <a href="{{ route('kashikari.myprofedit',$user->id ) }}" class="btn btn-primary">{{ __('Profile Edit')  }}</a>
     <br><br><br>
