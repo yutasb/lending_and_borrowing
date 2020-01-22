@@ -145,6 +145,10 @@ a {
     margin-top: 8rem !important;
 }
 
+.mt-8 {
+    margin-top: 4rem;
+}
+
 .mt-40 {
     margin-top: 40rem !important;
 }
@@ -152,6 +156,10 @@ a {
 .ml-5,
 .mx-5 {
     margin-left: 3rem !important;
+}
+
+.mb-5 {
+    margin-bottom: 3rem;
 }
 
 .ml-20 {
@@ -207,4 +215,43 @@ a {
 
 .right {
     text-align: right;
+}
+
+.text-right {
+    text-align: right !important;
+}
+
+.right2 {
+    display: block;
+    margin-right: 400px !important;
+}
+
+.under {
+    background: linear-gradient(transparent 80%, #4dc0b6 60%);
+}
+
+.fs20 {
+    font-size: 20px;
+}
+
+.fs30 {
+    font-size: 30px;
+}
+
+.arround {
+    padding: 1.8em 1.8em;
+    margin: 2em 0;
+    color: #5989cf;
+    background: #f6f5f4;
+    border-bottom: solid 6px #aac5de;
+    border-radius: 9px;
+}
+
+footer {
+    text-align: center;
+    width: 100%;
+    background: #66cc99;
+    color: white;
+    padding: 15px;
+    margin-top: 300px;
 }

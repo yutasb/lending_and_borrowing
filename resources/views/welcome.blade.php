@@ -42,29 +42,31 @@
         <br><br>
 
     </div>
-    <div class=" full-height ">
+    <div class="">
         <div class="container">
-            <h4 class='mt-10'>Lending and Borrowing で貸し借りを体験しよう。</h4>
+            <h4 class='mt-10'>Lending and Borrowing で「貸し借り」を体験しよう。</h4>
             <div class="row">
                 <div class='mt-5 ml-5 bginfo'>
-                    <input class='btn btn-info h-50 w-75 center ' value='借りる！'>
-                    <h1 class='mt-5'>借りる</h1>
-                    <p>買うほどではないけど、使いたい！</p>
-                    <p>買う前に一度試してみたい！</p>
+                    <input class='btn btn-info h-50 w-75 center' value='借りる！'>
+                    <div class='mt-8'>
+                        <p>買うほどではないけど、使いたい！</p>
+                        <p>買う前に一度試してみたい！</p>
+                    </div>
                 </div>
                 <br>
                 <div class='mt-5 ml-5 bginfo'>
                     <input class='btn btn-info h-50 w-75 center ' value='貸す！'>
-                    <h1 class='mt-5'>貸す</h1>
-                    <p>使う機会が少ない！</p>
-                    <p>使いたい人がいるかも！</p>
-
+                    <div class='mt-8'>
+                        <p>使う機会が少ない！</p>
+                        <p>売るのはもったいない・・・</p>
+                    </div>
                 </div><br>
                 <div class='mt-5 ml-5 bginfo'>
                     <input class='btn btn-info h-50 w-75 center ' value='また貸す！'>
-                    <h1 class='mt-5'>また貸す</h1>
-                    <p>貸していたものが返ってきたらまた貸せる！</p>
-                    <p>お小遣い稼ぎにも！</p>
+                    <div class='mt-8'>
+                        <p>返ってきたらまた貸せる！</p>
+                        <p>何度でも貸せる！</p>
+                    </div>
                 </div>
             </div>
             <p class='mt-3 right'><a href="{{url('/lent')}}">借りられる商品を見る></a></p>
@@ -72,29 +74,51 @@
     </div>
 
 
-    <div class="full-height ">
+    <div class='mt-10'>
         <div class="container">
-            <div class="row">
-                <h1>郵送でも手渡しでも！</h1>
+
+            <h4>郵送でも手渡しでも、受け取り可能！</h4>
+            <div class="row arround mt-5">
+                <div class=''>
+                    <img src="/storage/post_images/manga.png" width=200px;>　
+                    <img src="/storage/post_images/cloth.png" width=200px;>
+                </div>
+                <p class='mt-5 ml-5 fs20'><span class='under'>本や洋服など、<br>急ぎではないものは<span class='fs30'>郵送</span>で受け取り！</span></p>
+
             </div>
+            <div class="row mt-8 arround">
+                <div class="">
+                    <img src="/storage/post_images/ukkari.png" width=200px;>　　
+                    <img src="/storage/post_images/soccerboy.png" width=200px;>　　
+                </div>
+                <p class='mt-5 ml-5 fs20'><span class='under'>外出先で忘れ物をして必要なものや、<br>すぐ使いたいものは<span class='fs30'>手渡し</span>で受け取り！</span></p>
+            </div>
+            <p class='mt-5 right'><a href="{{url('/lent')}}">借りられる商品を見る></a></p>
         </div>
     </div>
 
+    <div class="container">
+        <h3 class='mt-10 text-center'>Lending and Borrowing　で「貸し借りライフ」をはじめよう。</h3>
+        <p class='toplink'>
 
-
-
-    <!--
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div> -->
+            @if (Route::has('login'))
+            <div class="top-right links">
+                @auth
+                <a href="{{ url('/lent') }}">Home</a>
+                @else
+                <p class='toplink text-center mt-8'>
+                    @if (Route::has('register')) <a href="{{ route('register') }}"><input class='btn btn-info' value="{{__('Register')}}"></a></p>
+                @endif
+                @endauth
+            </div>
+            @endif
     </div>
+
+    </div>
+
+    <footer>
+        &copy;2020 yutasb　All Right reserved.
+    </footer>
 
 </body>
 
