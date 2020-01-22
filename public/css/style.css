@@ -9,6 +9,12 @@ body {
     padding: 0;
 }
 
+a {
+    text-decoration: none;
+    color: #4dc0b5 !important;
+    font-size: 20px;
+}
+
 .full-height {
     height: 100vh;
 }
@@ -130,6 +136,10 @@ body {
     box-shadow: 0 0 0 0.2rem rgba(97, 157, 206, 0.5);
 }
 
+.mt-3 {
+    margin-top: 4rem;
+}
+
 .mt-10,
 .my-10 {
     margin-top: 8rem !important;
@@ -153,8 +163,11 @@ body {
 }
 
 .bginfo {
-    background-color: #4dc0b5;
+    background-color: #f6f5f4;
     padding: 20px;
+    border: solid #4dc0b5 2px;
+    width: 310px;
+    height: 450px;
 }
 
 .headimg {
@@ -183,5 +196,15 @@ body {
 .headimg .toplink {
     position: absolute;
     top: 20px;
-    left: 800px;
+    left: 1000px;
+}
+
+.center {
+    display: block;
+    margin: 0 auto;
+    font-size: 35px;
+}
+
+.right {
+    text-align: right;
 }

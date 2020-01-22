@@ -18,12 +18,12 @@
                             <label for="pic" class="col-md-4 col-form-label text-md-right">{{ __('Pic') }}</label>
 
                             <div class="col-md-6">
-                                <!--
-                                @if(Auth::user()->pic !== null)
-                                <img src="{{$pic}}" alt='icon' width=150px>
-                                @endif -->
 
-                                <input id="pic" type="file" class="form-control-file @error('pic') is-invalid @enderror" name="pic" value="{{ $pic }}" autocomplete="pic" autofocus>
+
+                                <!-- <img src="{{$pic}}" alt='icon' width=150px> -->
+
+
+                                <input id=" pic" type="file" class="form-control-file @error('pic') is-invalid @enderror" name="pic" value="{{ $pic }}" autocomplete="pic" autofocus>
 
                                 @error('pic')
                                 <span class="invalid-feedback" role="alert">

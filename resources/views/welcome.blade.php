@@ -23,7 +23,7 @@
             @auth
             <a href="{{ url('/lent') }}">Home</a>
             @else
-            <p class='toplink'> <a href="{{url('/lent')}}"><input class='btn btn-info' value='のぞいてみる'></a>
+            <p class='toplink'>
                 <a href="{{ route('login') }}"><input class='btn btn-info' value="{{__('Login')}}"> </a>
                 @if (Route::has('register')) <a href="{{ route('register') }}"><input class='btn btn-info' value="{{__('Register')}}"></a></p>
             @endif
@@ -44,33 +44,35 @@
     </div>
     <div class=" full-height ">
         <div class="container">
-            <h4 class='mt-5'>Lending and Borrowing で貸し借りを体験しよう。</h4>
+            <h4 class='mt-10'>Lending and Borrowing で貸し借りを体験しよう。</h4>
             <div class="row">
                 <div class='mt-5 ml-5 bginfo'>
-                    <img src="/storage/post_images/noimage.png" width=250px>
+                    <input class='btn btn-info h-50 w-75 center ' value='借りる！'>
                     <h1 class='mt-5'>借りる</h1>
                     <p>買うほどではないけど、使いたい！</p>
                     <p>買う前に一度試してみたい！</p>
                 </div>
                 <br>
                 <div class='mt-5 ml-5 bginfo'>
-                    <img src="/storage/post_images/noimage.png" width=250px>
+                    <input class='btn btn-info h-50 w-75 center ' value='貸す！'>
                     <h1 class='mt-5'>貸す</h1>
-                    <p>使いたい人がいるかも！</p>
                     <p>使う機会が少ない！</p>
+                    <p>使いたい人がいるかも！</p>
+
                 </div><br>
                 <div class='mt-5 ml-5 bginfo'>
-                    <img src="/storage/post_images/noimage.png" width=250px>
+                    <input class='btn btn-info h-50 w-75 center ' value='また貸す！'>
                     <h1 class='mt-5'>また貸す</h1>
                     <p>貸していたものが返ってきたらまた貸せる！</p>
                     <p>お小遣い稼ぎにも！</p>
                 </div>
             </div>
+            <p class='mt-3 right'><a href="{{url('/lent')}}">借りられる商品を見る></a></p>
         </div>
     </div>
 
 
-    <div class="full-height bginfo">
+    <div class="full-height ">
         <div class="container">
             <div class="row">
                 <h1>郵送でも手渡しでも！</h1>

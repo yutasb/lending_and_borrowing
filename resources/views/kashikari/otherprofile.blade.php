@@ -2,13 +2,15 @@
 
 @section('content')
 <div class="container">
-    <img src="{{asset('storage/post_images/'.$users->getIcon())}}" width=150px>
-    <!-- アイコン -->
-    <h3>{{$users->name}}</h3>
-    <!-- 名前 -->
-    <p>{{$users->myself}}</p>
-    <!-- 自己紹介 -->
+    <div class="text-center">
+        <img src="{{asset('storage/post_images/'.$users->getIcon())}}" width=150px>
+        <!-- アイコン -->
+        <h3>{{$users->name}}</h3>
+        <!-- 名前 --><br>
+        <p>{!! nl2br(e($users->myself)) !!}</p>
 
+        <!-- 自己紹介 -->
+    </div>
 
     <br><br><br>
     <h2>{{__('My Lent List')}}</h2>

@@ -259,6 +259,31 @@ textarea {
     line-height: inherit;
 }
 
+.picbox {
+    width: 300px;
+    height: 300px;
+    margin: 0 0 0 0;
+}
+
+.maxwidth {
+    max-width: 33%;
+    height: auto;
+}
+
+.fs10 {
+    font-size: 20px;
+}
+
+.tablewidth {
+    width: 500px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.bggray{
+    background-color:#f6f5f4;
+}
+
 button,
 input {
     overflow: visible;
@@ -1988,13 +2013,12 @@ pre code {
     padding: 1rem;
     vertical-align: top;
     border-top: 1px solid #dee2e6;
-    text-align:center;
-    
+    text-align: center;
+    width: 40px;
 }
 
-.table th{
-    background-color:#f6f5f4;
-    
+.table th {
+    background-color: #f6f5f4;
 }
 
 .table thead th {
@@ -5759,6 +5783,14 @@ a.badge:focus {
     padding-left: 0.6em;
     border-radius: 10rem;
 }
+
+.badge-teal {
+    color: #fff;
+    background-color: #4dc0b5;
+    border-color: #4dc0b5;
+    font-size: 16px;
+}
+
 
 .badge-primary {
     color: #fff;

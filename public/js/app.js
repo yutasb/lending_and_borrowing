@@ -49620,3 +49620,6 @@ module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/output_kashik
 /***/ })
 
 /******/ });
+
+
+require("./sample");

@@ -2,13 +2,24 @@
 
 @section('content')
 <div class="container">
+    <div class="text-center">
 
-    <img src="{{$pic}}" alt='icon' width=150px>
+        @if($user->pic == null)
+        <img src="/storage/post_images/noicon.png" width=150px;>
+        @else
+        <img src="{{$pic}}" alt='icon' width=150px>
+        @endif
 
-    <h3>{{$user->name}}</h3>
 
-    <p>{!! nl2br(e($user->myself)) !!}</p>
-    <a href="{{ route('kashikari.myprofedit',$user->id ) }}" class="btn btn-primary">{{ __('Profile Edit')  }}</a>
+
+
+
+        <h3>{{$user->name}}</h3>
+        <br>
+        <p>{!! nl2br(e($user->myself)) !!}</p>
+        <br>
+        <a href="{{ route('kashikari.myprofedit',$user->id ) }}" class="btn btn-primary">{{ __('Profile Edit')  }}</a>
+    </div>
     <br><br><br>
     <h2>{{__('My Lent List')}}</h2>
     <div class="row">
@@ -55,7 +66,9 @@
                 </div>
             </div>
         </div>
+
         @endif
+
         @endif
         @endforeach
     </div>

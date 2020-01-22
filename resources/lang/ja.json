@@ -1,5 +1,5 @@
 {
-    "Lent Register": "貸すもの登録",
+    "Lent Register": "出品登録",
     "Title": "タイトル",
     "Login": "ログイン",
     "Register": "新規会員登録",
@@ -33,7 +33,7 @@
     "Like Register": "「気になる」に追加しました",
     "Like Release": "「気になる」を解除しました",
     "Invalid operation was perfomed": "不適切な操作が行われました",
-    "Registered": "出品しました",
+    "Registered.": "出品しました",
     "Deleted": "削除しました",
     "Updated": "更新しました",
     "Update": "更新する",

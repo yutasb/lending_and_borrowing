@@ -11,25 +11,40 @@
                     <h3>
                         <form method='post' action="{{route('like.off',$kashikari->id)}}">
                             @csrf
-                            <span class='badge-info'>{{$kashikari->getCategoryName()}}</span>　
-                            {{$kashikari->title}}　　　　　　　　　　　　　　
-                            <input type='submit' name='like' class='btn btn-warning' value="{{__('Like')}}">
+                            <span class='badge-teal p-md-1'>{{$kashikari->getCategoryName()}}</span>　
+                            {{$kashikari->title}}　　　　　　　　　　　　
+                            <input type='submit' name='like' class='btn btn-success' value="{{__('Like')}}">
                         </form>
                     </h3>
                 </div>
 
                 <div class='card-body text-left'>
+
                     @if($kashikari->pic1 == null)
-                    <img src="/storage/post_images/noimage.png" width=150px>
+                    <img src="/storage/post_images/noimage.png" class='maxwidth'>
                     @else
-                    <img src="{{asset('storage/post_images/'.$kashikari->pic1)}}" alt='イメージ画像1' width=350px>
+                    <img src="{{asset('storage/post_images/'.$kashikari->pic1)}}" alt='イメージ画像1' class='maxwidth'>
                     @endif
 
-                    <div class="text-right float-right mr-10 mt-5">
+
+                    @if($kashikari->pic2 == null)
+                    <img src="/storage/post_images/noimage.png" class='maxwidth'>
+                    @else
+                    <img src="{{asset('storage/post_images/'.$kashikari->pic2)}}" alt='イメージ画像2' class='maxwidth'>
+                    @endif
+
+                    @if($kashikari->pic3 == null)
+                    <img src="/storage/post_images/noimage.png" class='maxwidth'>
+                    @else
+                    <img src="{{asset('storage/post_images/'.$kashikari->pic3)}}" alt='イメージ画像3' class='maxwidth'>
+                    @endif
+
+                    <div class="text-center mt-5 tablewidth">
                         <table class='table'>
                             <tr>
                                 <th>出品者</th>
-                                <td><a href="{{route('kashikari.otherprofile',$kashikari->user_id)}}"><img src="{{asset('storage/post_images/'.$kashikari->getIcon())}}" width=80px class='mb-3'></a></td>
+                                <td><a href="{{route('kashikari.otherprofile',$kashikari->user_id)}}"><img src="{{asset('storage/post_images/'.$kashikari->getIcon())}}" width=80px class='mb-3'>
+                                        　　<span class='fs10'>　{{$kashikari->user->name}}</span></a></td>
                             </tr>
                             <tr>
                                 <th>場所</th>
@@ -60,24 +75,14 @@
                         </table>
                     </div>
 
-                    @if($kashikari->pic2 == null)
-                    <img src="/storage/post_images/noimage.png" width=150px>
-                    @else
-                    <img src="{{asset('storage/post_images/'.$kashikari->pic2)}}" alt='イメージ画像2' width=150px>
-                    @endif
 
-                    @if($kashikari->pic3 == null)
-                    <img src="/storage/post_images/noimage.png" width=150px>
-                    @else
-                    <img src="{{asset('storage/post_images/'.$kashikari->pic3)}}" alt='イメージ画像3' width=150px>
-                    @endif
-                    <div class="text-center">
+                    <div class="text-center mt-5">
                         <form method='post'>
                             @csrf
                             @if($kashikari->kashikari_using == 1)
                             <input name='using' type='btn' class='btn btn-danger w-12' value="{{__('Using')}}">
                             @else
-                            <a href="{{route('chat.confirm',$kashikari->id)}}"><input name='using' type='btn' class='btn btn-primary w-12' value="{{__('Borrow!')}}"></a>
+                            <a href="{{route('chat.confirm',$kashikari->id)}}"><input name='using' type='btn' class='btn btn-teal w-12' value="{{__('Borrow!')}}"></a>
                             @endif
                         </form>
                     </div>
