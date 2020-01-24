@@ -5,9 +5,9 @@
     <div class="text-center">
 
         @if($user->pic == null)
-        <img src="/storage/post_images/noicon.png" width=150px;>
+        <img src="https://lending-and-borrowing.s3-ap-northeast-1.amazonaws.com/myprefix/noicon.png" width=150px;>
         @else
-        <img src="{{$pic}}" alt='icon' width=150px>
+        <img src="{{$user->pic}}" alt='icon' width=150px>
 
 
         @endif
