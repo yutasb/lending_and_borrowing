@@ -1,15 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-
 <div class="container">
     <div class="text-center">
 
         @if($user->pic == null)
         <img src="/storage/post_images/noicon.png" width=150px;>
         @else
+        <img src="{{$pic}}" alt='icon' width=150px>
 
-        <img src="data:pic/png;base64,<?= pic ?>">
         @endif
 
 

@@ -159,8 +159,8 @@ class KashikariController extends Controller
             return redirect('/mypage')->with('flash_message', __('Invalid operation was perfomed'));
         }
         $user = Auth::user()->find($id);
-        $pic = base64_encode(file_get_contents($request->pic->getRealPath()));
-        return view('kashikari.myprofedit', ['user' => $user, 'pic' => $pic,]);
+
+        return view('kashikari.myprofedit', ['user' => $user, 'pic' => str_replace('public/', 'storage/', Auth::user()->pic),]);
     }
 
     public function myprofupdate(Request $request, $id)
