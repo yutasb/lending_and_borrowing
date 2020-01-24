@@ -12,6 +12,7 @@ use App\User;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class KashikariController extends Controller
 {
@@ -97,8 +98,9 @@ class KashikariController extends Controller
         $user = Auth::user();
         $kashikaris = Kashikari::get();
 
+        $path = Storage::disk('s3')->url('/');
 
-        return view('kashikari.mypage', ['kashikaris' => $kashikaris, 'user' => $user, 'pic' => str_replace('public/', 'storage/', Auth::user()->pic),]);
+        return view('kashikari.mypage', ['kashikaris' => $kashikaris, 'user' => $user, 'pic' => $path,]);
         // str_replace("検索を行う文字列", "置き換えを行う文字列", "対象の文字列");
     }
 
@@ -157,17 +159,6 @@ class KashikariController extends Controller
 
 
 
-    public function store(Request $request)
-    {
-        $image = new Image();
-        $image->image = base64_encode(file_get_contents($request->image));
-        $image->save();
-        return redirect('/');
-    }
-
-
-
-
 
 
 
@@ -183,10 +174,20 @@ class KashikariController extends Controller
             return redirect('/mypage')->with('flash_message', __('Invalid operation was perfomed'));
         }
         $user = Auth::user()->find($id);
-        $user->pic = base64_encode(file_get_contents($request->pic));
-        $user->save();
-        return view('kashikari.myprofedit', ['user' => $user,]);
+        $pic = $request->file('pic');
+        $path = Storage::disk('s3')->putFile('/' . $pic, 'public');
+
+        return view('kashikari.myprofedit', ['user' => $user]);
     }
+
+
+
+
+
+
+
+
+
 
     public function myprofupdate(Request $request, $id)
     {
