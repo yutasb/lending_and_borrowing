@@ -54,7 +54,7 @@
                             </tr>
                             <tr>
                                 <th>お渡し方法</th>
-                                <td><span class='badge-info'>{{$kashikari->method->name}}</span></td>
+
                             </tr>
                             <tr>
                                 <th>価格
