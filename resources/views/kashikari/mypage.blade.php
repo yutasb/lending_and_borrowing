@@ -7,7 +7,8 @@
         @if($user->pic == null)
         <img src="/storage/post_images/noicon.png" width=150px;>
         @else
-        <img src="{{$pic}}" alt='icon' width=150px>
+
+        <img src="data:image/png;base64,<?= pic ?>">
         @endif
 
 
