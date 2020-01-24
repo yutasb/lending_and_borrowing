@@ -41,7 +41,7 @@ class User extends Authenticatable
     public function getIcon()
     {
         $pic = $this->pic;
-        return basename($pic);
+        return $pic;
     }
 
     public function kashikaris()

@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="text-center">
-        <img src="{{asset('storage/post_images/'.$users->getIcon())}}" width=150px>
+        <img src="{{$users->getIcon()}}" width=150px>
         <!-- アイコン -->
         <h3>{{$users->name}}</h3>
         <!-- 名前 --><br>
@@ -21,7 +21,7 @@
             <div class="card">
                 <div class='card-body  text-center'>
                     <a href="{{ route('kashikari.show',$kashikari->id ) }}">
-                        <img src="{{asset('storage/post_images/'.$kashikari->pic1)}}" alt='イメージ画像' width=150px>
+                        <img src="{{$kashikari->pic1}}" alt='イメージ画像' width=150px>
                         <h3 class="card-title">{{$kashikari->title}}</h3>
                     </a>
                 </div>
