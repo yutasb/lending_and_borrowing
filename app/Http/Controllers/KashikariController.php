@@ -190,13 +190,13 @@ class KashikariController extends Controller
             return redirect('/mypage')->with('flash_message', __('Invalid operation was perfomed'));
         }
         $user = Auth::user()->find($id);
-        $time = date("Ymdhis");
+
 
         $picupload = $user->pic = $request->file('pic');
         $path = Storage::disk('s3')->putFile('myprefix', $picupload, 'public');
         $user->pic = Storage::disk('s3')->url($path);
 
-        $user->pic = $request->pic->storeAs('public/post_images', $time . '_' . Auth::user()->id . '.jpg');
+
         $user->name = $request->name;
         $user->email = $request->email;
         $user->myself = $request->myself;

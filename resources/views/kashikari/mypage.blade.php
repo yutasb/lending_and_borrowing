@@ -32,7 +32,7 @@
             <div class="card">
                 <div class="card-body text-center">
                     <a href="{{ route('kashikari.edit',$kashikari->id ) }}">
-                        <img src="{{asset('storage/post_images/'.$kashikari->pic1)}}" alt='イメージ画像' width=150px>
+                        <img src="{{$kashikari->pic1}}" alt='イメージ画像' width=150px>
                         <h3 class="card-title">{{$kashikari->title}}</h3>
                     </a>
                 </div>
@@ -53,7 +53,7 @@
             <div class="card">
                 <div class="card-body text-center">
                     <a href="{{ route('chat.index',$kashikari->id ) }}">
-                        <img src="{{asset('storage/post_images/'.$kashikari->pic1)}}" alt='イメージ画像' width=180px>
+                        <img src="{{$kashikari->pic1}}" alt='イメージ画像' width=180px>
                         <h5 class="card-title text-center">
                             {{$kashikari->title}}　
                         </h5>
@@ -85,7 +85,7 @@
             <div class="card">
                 <div class="card-body text-center">
                     <a href="{{ route('chat.index',$kashikari->id ) }}">
-                        <img src="{{asset('storage/post_images/'.$kashikari->pic1)}}" alt='イメージ画像' width=180px>
+                        <img src="{{$kashikari->pic1}}" alt='イメージ画像' width=180px>
                         <h5 class="card-title text-center">
                             {{$kashikari->title}}　
                         </h5>
