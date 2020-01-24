@@ -21,7 +21,7 @@
         @if (Route::has('login'))
         <div class="top-right links">
             @auth
-            <p class='toplink'><a href="{{ url('/lent') }}">Home</a></p>
+            <p class='toplink'><a href="{{ url('/lent') }}"><input class='btn btn-info' value="{{toMyPage}}"></a></p>
             @else
             <p class='toplink'>
                 <a href="{{ route('login') }}"><input class='btn btn-info' value="{{__('Login')}}"> </a>
@@ -104,7 +104,8 @@
             @if (Route::has('login'))
             <div class="top-right links">
                 @auth
-                <a href="{{ url('/lent') }}"><input class='btn btn-info' value="マイページへ"></a>
+                <p class='toplink text-center mt-8'>
+                    <a href="{{ url('/lent') }}"><input class='btn btn-info' value="{{toMyPage}}"></a></p>
                 @else
                 <p class='toplink text-center mt-8'>
                     @if (Route::has('register')) <a href="{{ route('register') }}"><input class='btn btn-info' value="{{__('Register')}}"></a></p>
