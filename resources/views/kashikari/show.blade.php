@@ -11,7 +11,7 @@
                     <h3>
                         <form method='post' action="{{route('like.off',$kashikari->id)}}">
                             @csrf
-                            <span class='badge-teal p-md-1'>{{$kashikari->getCategoryName()}}</span>　
+                            <span class='badge-teal p-md-1'>{{$kashikari->category->name}}</span>　
                             {{$kashikari->title}}　　　　　　　　　　　　
                             <input type='submit' name='like' class='btn btn-success' value="{{__('Like')}}">
                         </form>
