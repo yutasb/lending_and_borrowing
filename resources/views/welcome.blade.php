@@ -34,7 +34,7 @@
 
 
 
-        <img src="https://lending-and-borrowing.s3-ap-northeast-1.amazonaws.com/myprefix/top-page1.png" class='img'>
+        <img src="Storage::disk('s3')->url(/)" class='img'>
         <div class="title">
             <p class='topmessage'>Lending<br>　and<br>Borrowing</p>
         </div>
@@ -80,16 +80,16 @@
             <h4>郵送でも手渡しでも、受け取り可能！</h4>
             <div class="row arround mt-5">
                 <div class=''>
-                    <img src="/storage/post_images/manga.png" width=200px;>　
-                    <img src="/storage/post_images/cloth.png" width=200px;>
+                    <img src="https://lending-and-borrowing.s3-ap-northeast-1.amazonaws.com/myprefix/manga.png" width=200px;>　
+                    <img src="https://lending-and-borrowing.s3-ap-northeast-1.amazonaws.com/myprefix/cloth.png" width=200px;>
                 </div>
                 <p class='mt-5 ml-5 fs20'><span class='under'>本や洋服など、<br>急ぎではないものは<span class='fs30'>郵送</span>で受け取り！</span></p>
 
             </div>
             <div class="row mt-8 arround">
                 <div class="">
-                    <img src="/storage/post_images/ukkari.png" width=200px;>　　
-                    <img src="/storage/post_images/soccerboy.png" width=200px;>　　
+                    <img src="https://lending-and-borrowing.s3-ap-northeast-1.amazonaws.com/myprefix/soccerboy.png" width=200px;>　　
+                    <img src="https://lending-and-borrowing.s3-ap-northeast-1.amazonaws.com/myprefix/soccerboy.png" width=200px;>　　
                 </div>
                 <p class='mt-5 ml-5 fs20'><span class='under'>外出先で忘れ物をして必要なものや、<br>すぐ使いたいものは<span class='fs30'>手渡し</span>で受け取り！</span></p>
             </div>
