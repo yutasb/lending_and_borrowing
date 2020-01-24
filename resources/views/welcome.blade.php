@@ -34,7 +34,7 @@
 
 
 
-        <img src="Storage::disk('s3')->url(/)" class='img'>
+        <img src="https://lending-and-borrowing.s3-ap-northeast-1.amazonaws.com/myprefix/top-page1.png" class='img'>
         <div class="title">
             <p class='topmessage'>Lending<br>　and<br>Borrowing</p>
         </div>
@@ -88,7 +88,7 @@
             </div>
             <div class="row mt-8 arround">
                 <div class="">
-                    <img src="https://lending-and-borrowing.s3-ap-northeast-1.amazonaws.com/myprefix/soccerboy.png" width=200px;>　　
+                    <img src="https://lending-and-borrowing.s3-ap-northeast-1.amazonaws.com/myprefix/ukkari.png" width=200px;>　　
                     <img src="https://lending-and-borrowing.s3-ap-northeast-1.amazonaws.com/myprefix/soccerboy.png" width=200px;>　　
                 </div>
                 <p class='mt-5 ml-5 fs20'><span class='under'>外出先で忘れ物をして必要なものや、<br>すぐ使いたいものは<span class='fs30'>手渡し</span>で受け取り！</span></p>

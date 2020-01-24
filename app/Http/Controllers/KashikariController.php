@@ -37,18 +37,12 @@ class KashikariController extends Controller
         $kashikari->comment = $request->comment;
         $kashikari->method_id = $request->method_id;
 
-
         //s3アップロード開始
-        $pic1 = $request->file('pic1');
-        // バケットの`myprefix`フォルダへアップロード
-        $path = Storage::disk('s3')->putFile('myprefix', $pic1, 'public');
+        $pic1upload = $kashikari->pic1 = $request->file('pic1');
+        // バケットの`myprefix`フォルダへアップロード。第一引数はバゲット内の階層。第二引数は受け取った画像が入った変数。第三引数は原則publicを指定（ファイルのURLによるアクセスが可能に）。
+        $path = Storage::disk('s3')->putFile('myprefix', $pic1upload, 'public');
         // アップロードした画像のフルパスを取得
         $kashikari->pic1 = Storage::disk('s3')->url($path);
-
-
-
-
-
 
         if ($request->file('pic2')) {
             $filename2 = $request->file('pic2')->store('public/post_images');
