@@ -11,7 +11,7 @@
                     <h3>
                         <form method='post' action="{{route('like.off',$kashikari->id)}}">
                             @csrf
-                            　
+                            <span class='badge-teal p-md-1'>{{$kashikari->category->name}}</span>　
                             {{$kashikari->title}}　　　　　　　　　　　　
                             <input type='submit' name='like' class='btn btn-success' value="{{__('Like')}}">
                         </form>
@@ -43,7 +43,7 @@
                         <table class='table'>
                             <tr>
                                 <th>出品者</th>
-                                <td><a href="{{route('kashikari.otherprofile',$kashikari->user_id)}}"><img src="{{$kashikari->pic}}" width=80px class='mb-3'>
+                                <td><a href="{{route('kashikari.otherprofile',$kashikari->user_id)}}"><img src="{{asset('storage/post_images/'.$kashikari->getIcon())}}" width=80px class='mb-3'>
                                         　　<span class='fs10'>　{{$kashikari->user->name}}</span></a></td>
                             </tr>
                             <tr>
@@ -54,7 +54,7 @@
                             </tr>
                             <tr>
                                 <th>お渡し方法</th>
-
+                                <td><span class='badge-info'>{{$kashikari->method->name}}</span></td>
                             </tr>
                             <tr>
                                 <th>価格
@@ -96,7 +96,7 @@
                 <div class='card-body text-left'>
                     @foreach($messages as $message)
                     <p>
-                        <a href="{{route('kashikari.otherprofile',$message->from_user)}}">{{$message->getUserName()}}</a>
+                        <a href="{{route('kashikari.otherprofile',$message->user_id)}}"><img src="{{asset('storage/post_images/'.$message->getUserIcon())}}" width=30px>{{$message->getUserName()}}</a>
                         　　{{$message->msg}}</p>
                     @endforeach
                 </div>

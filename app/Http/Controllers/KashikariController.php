@@ -90,7 +90,7 @@ class KashikariController extends Controller
         ]);
         $messages = new Message;
         $kashikaris = Kashikari::find($id);
-        $messages->from_user = Auth::user()->id;
+        $messages->user_id = Auth::user()->id;
         $messages->msg = $request->msg;
         $messages->kashikari_id = $kashikaris->id;
         $messages->save();
@@ -198,6 +198,10 @@ class KashikariController extends Controller
 
         return redirect('/mypage')->with('flash_message', __('Updated'));
     }
+
+
+
+
     public function otherprofile($id)
     {
         $users = User::find($id);
