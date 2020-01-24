@@ -34,7 +34,7 @@
 
 
 
-        <img src="/storag/post-images/top-page1.png" class='img'>
+        <img src="https://lending-and-borrowing.s3-ap-northeast-1.amazonaws.com/myprefix/top-page1.png" class='img'>
         <div class="title">
             <p class='topmessage'>Lending<br>　and<br>Borrowing</p>
         </div>
