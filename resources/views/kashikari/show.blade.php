@@ -96,7 +96,7 @@
                 <div class='card-body text-left'>
                     @foreach($messages as $message)
                     <p>
-                        <a href="{{route('kashikari.otherprofile',$message->from_user)}}"><img src="{{$message->from_user->pic}}" width=30px>{{$message->getUserName()}}</a>
+                        <a href="{{route('kashikari.otherprofile',$message->from_user)}}">{{$message->getUserName()}}</a>
                         　　{{$message->msg}}</p>
                     @endforeach
                 </div>

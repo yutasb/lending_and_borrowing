@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Message extends Model
 {
-    protected $fillable = ['user_id', 'msg', 'kashikari_id'];
+    protected $fillable = ['from_user', 'msg', 'kashikari_id'];
 
     public function kashikari()
     {
@@ -20,13 +20,13 @@ class Message extends Model
 
     public function getUserName()
     {
-        return $this->user->name;
+        return $this->from_user->name;
     }
 
 
     public function getUserIcon()
     {
-        $pic = $this->user->pic;
+        $pic = $this->from_user->pic;
         return basename($pic);
     }
 }
