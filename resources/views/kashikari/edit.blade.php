@@ -100,7 +100,7 @@
                             <label for="pic1" class="col-md-4 col-form-label text-md-right">{{ __('pic1')}}</label>
 
                             <div class="col-md-6">
-                                <img src="{{asset('storage/post_images/'.$kashikari->pic1)}}" alt='イメージ画像' width=180px>
+                                <img src="{{$kashikari->pic1}}" alt='イメージ画像' width=180px>
                                 <input id="pic1" type="file" class="form-control-file @error('pic1') is-invalid @enderror" name="pic1" value="{{$kashikari->pic1}}">
 
 
@@ -119,7 +119,7 @@
 
                             <div class="col-md-6">
                                 @if($kashikari->pic2 !== null)
-                                <img src="{{asset('storage/post_images/'.$kashikari->pic2)}}" alt='イメージ画像1' width=150px>
+                                <img src="{{$kashikari->pic2}}" alt='イメージ画像1' width=150px>
                                 @endif
 
                                 <input id="pic2" type="file" class="form-control-file @error('comment') is-invalid @enderror" name="pic2" value="{{ $kashikari->pic2 }}">
@@ -137,7 +137,7 @@
 
                             <div class="col-md-6">
                                 @if($kashikari->pic3 !== null)
-                                <img src="{{asset('storage/post_images/'.$kashikari->pic3)}}" alt='イメージ画像1' width=150px>
+                                <img src="{{$kashikari->pic3}}" alt='イメージ画像1' width=150px>
                                 @endif
 
                                 <input id="pic3" type="file" class="form-control-file @error('comment') is-invalid @enderror" name="pic3" value="{{ $kashikari->pic3 }}">

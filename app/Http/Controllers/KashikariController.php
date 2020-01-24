@@ -133,18 +133,24 @@ class KashikariController extends Controller
         $kashikari->method_id = $request->method_id;
 
         if ($request->file('pic1')) {
-            $filename = $request->file('pic1')->store('public/post_images');
-            $kashikari->pic1 = basename($filename);
+
+            $pic1upload = $kashikari->pic1 = $request->file('pic1');
+            $path = Storage::disk('s3')->putFile('myprefix', $pic1upload, 'public');
+            $kashikari->pic1 = Storage::disk('s3')->url($path);
         }
 
         if ($request->file('pic2')) {
-            $filename2 = $request->file('pic2')->store('public/post_images');
-            $kashikari->pic2 = basename($filename2);
+
+            $pic2upload = $kashikari->pic2 = $request->file('pic2');
+            $path = Storage::disk('s3')->putFile('myprefix', $pic2upload, 'public');
+            $kashikari->pic2 = Storage::disk('s3')->url($path);
         }
 
         if ($request->file('pic3')) {
-            $filename3 = $request->file('pic3')->store('public/post_images');
-            $kashikari->pic3 = basename($filename3);
+
+            $pic3upload = $kashikari->pic3 = $request->file('pic3');
+            $path = Storage::disk('s3')->putFile('myprefix', $pic3upload, 'public');
+            $kashikari->pic3 = Storage::disk('s3')->url($path);
         }
 
         $kashikari->user_id = Auth::user()->id;
