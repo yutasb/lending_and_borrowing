@@ -19,7 +19,8 @@ class ChatController extends Controller
     }
 
     public function index($id)
-    {   $param = ['kashikari_using' => '1', 'borrower' => Auth::user()->id];
+    {
+        $param = ['kashikari_using' => '1', 'borrower' => Auth::user()->id];
         $kashikari = Kashikari::find($id);
         Kashikari::where('id', $id)->update($param);
         $chats = Chat::where('kashikari_id', $id)->get();  //これでkashikari_idとURIの{id}が一致しているレコードを取ってこられる。

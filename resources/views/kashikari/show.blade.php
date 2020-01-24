@@ -43,7 +43,7 @@
                         <table class='table'>
                             <tr>
                                 <th>出品者</th>
-                                <td><a href="{{route('kashikari.otherprofile',$kashikari->user_id)}}"><img src="{{asset('storage/post_images/'.$kashikari->getIcon())}}" width=80px class='mb-3'>
+                                <td><a href="{{route('kashikari.otherprofile',$kashikari->user_id)}}"><img src="{{$kashikari->pic}}" width=80px class='mb-3'>
                                         　　<span class='fs10'>　{{$kashikari->user->name}}</span></a></td>
                             </tr>
                             <tr>

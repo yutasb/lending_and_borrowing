@@ -90,7 +90,7 @@ class KashikariController extends Controller
         ]);
         $messages = new Message;
         $kashikaris = Kashikari::find($id);
-        $messages->user_id = Auth::user()->id;
+        $messages->to_user = Auth::user()->id;
         $messages->msg = $request->msg;
         $messages->kashikari_id = $kashikaris->id;
         $messages->save();
