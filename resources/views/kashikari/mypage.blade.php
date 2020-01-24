@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
     <div class="text-center">
 
@@ -8,7 +9,7 @@
         <img src="/storage/post_images/noicon.png" width=150px;>
         @else
 
-        <img src="data:image/png;base64,<?= pic ?>">
+        <img src="data:pic/png;base64,<?= pic ?>">
         @endif
 
 
