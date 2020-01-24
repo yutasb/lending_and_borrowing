@@ -116,6 +116,7 @@
 
 
             </div>
+            <p class='text-right'><a href="{{route('kashikari')}}">商品一覧へ>></a></p>
         </div>
     </div>
     @endsection
