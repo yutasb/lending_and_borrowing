@@ -167,19 +167,7 @@ class KashikariController extends Controller
         return redirect('/mypage')->with('flash_message', __('Deleted.'));
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-    public function myprofedit(Request $request, $id)
+    public function myprofedit($id)
     {
         if (!ctype_digit($id)) {
             return redirect('/mypage')->with('flash_message', __('Invalid operation was perfomed'));
@@ -210,19 +198,6 @@ class KashikariController extends Controller
 
         return redirect('/mypage')->with('flash_message', __('Updated'));
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
     public function otherprofile($id)
     {
         $users = User::find($id);

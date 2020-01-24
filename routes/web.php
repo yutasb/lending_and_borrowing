@@ -16,7 +16,7 @@ use App\Http\Controllers\LikesController;
 
 Auth::routes();
 //認証機能に関するrootはこれにまとめられている。
-Route::get('/home', 'kashikariController@index')->name('kashikari');
+Route::get('/home', 'KashikariController@index')->name('kashikari');
 Route::get('/', function () {
     return view('welcome');
 });
