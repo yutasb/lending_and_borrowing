@@ -21,22 +21,22 @@
                 <div class='card-body text-left'>
 
                     @if($kashikari->pic1 == null)
-                    <img src="/storage/post_images/noimage.png" class='maxwidth'>
+                    <img src="https://lending-and-borrowing.s3-ap-northeast-1.amazonaws.com/myprefix/noimage.png" class='maxwidth'>
                     @else
-                    <img src="{{asset('storage/post_images/'.$kashikari->pic1)}}" alt='イメージ画像1' class='maxwidth'>
+                    <img src="{{$kashikari->pic1}}" alt='イメージ画像1' class='maxwidth'>
                     @endif
 
 
                     @if($kashikari->pic2 == null)
-                    <img src="/storage/post_images/noimage.png" class='maxwidth'>
+                    <img src="https://lending-and-borrowing.s3-ap-northeast-1.amazonaws.com/myprefix/noimage.png" class='maxwidth'>
                     @else
-                    <img src="{{asset('storage/post_images/'.$kashikari->pic2)}}" alt='イメージ画像2' class='maxwidth'>
+                    <img src="{{$kashikari->pic2}}" alt='イメージ画像2' class='maxwidth'>
                     @endif
 
                     @if($kashikari->pic3 == null)
-                    <img src="/storage/post_images/noimage.png" class='maxwidth'>
+                    <img src="https://lending-and-borrowing.s3-ap-northeast-1.amazonaws.com/myprefix/noimage.png" class='maxwidth'>
                     @else
-                    <img src="{{asset('storage/post_images/'.$kashikari->pic3)}}" alt='イメージ画像3' class='maxwidth'>
+                    <img src="{{$kashikari->pic3}}" alt='イメージ画像3' class='maxwidth'>
                     @endif
 
                     <div class="text-center mt-5 tablewidth">

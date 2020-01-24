@@ -48,7 +48,7 @@ class Kashikari extends Model
 
     public function getCategoryName()
     {
-        return $this->category->name;
+        return $this->Category->name;
     }
 
 
