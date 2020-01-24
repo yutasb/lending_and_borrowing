@@ -18,7 +18,7 @@ class Kashikari extends Model
     public function getIcon()
     {
         $pic = $this->user->pic;
-        return basename($pic);
+        return $pic;
     }
 
     public function likes()
