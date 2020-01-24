@@ -153,14 +153,39 @@ class KashikariController extends Controller
         Auth::user()->kashikaris()->find($id)->delete();
         return redirect('/mypage')->with('flash_message', __('Deleted.'));
     }
+
+
+
+
+    public function store(Request $request)
+    {
+        $image = new Image();
+        $image->image = base64_encode(file_get_contents($request->image));
+        $image->save();
+        return redirect('/');
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
     public function myprofedit(Request $request, $id)
     {
         if (!ctype_digit($id)) {
             return redirect('/mypage')->with('flash_message', __('Invalid operation was perfomed'));
         }
         $user = Auth::user()->find($id);
-
-        return view('kashikari.myprofedit', ['user' => $user, 'pic' => str_replace('public/', 'storage/', Auth::user()->pic),]);
+        $user->pic = base64_encode(file_get_contents($request->pic));
+        $user->save();
+        return view('kashikari.myprofedit', ['user' => $user,]);
     }
 
     public function myprofupdate(Request $request, $id)

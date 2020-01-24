@@ -34,7 +34,7 @@
 
 
 
-        <img src="public/images/top-page1.png" class='img'>
+        <img src="/storag/post-images/top-page1.png" class='img'>
         <div class="title">
             <p class='topmessage'>Lending<br>　and<br>Borrowing</p>
         </div>
