@@ -44,7 +44,7 @@
     </div>
     <div class="">
         <div class="container">
-            <h4 class='mt-10'>Lending and Borrowing で「貸し借り」を体験しよう。</h4>
+            <h2 class='mt-10'>Lending and Borrowing で「貸し借り」を体験しよう。</h2>
             <div class="row">
                 <div class='mt-5 ml-5 bginfo'>
                     <input class='btn btn-info h-50 w-75 center' value='借りる！'>
@@ -74,10 +74,10 @@
     </div>
 
 
-    <div class='mt-10'>
+    <div class='mt-30'>
         <div class="container">
 
-            <h4>郵送でも手渡しでも、受け取り可能！</h4>
+            <h2>郵送でも手渡しでも、受け取り可能！</h2>
             <div class="row arround mt-5">
                 <div class=''>
                     <img src="https://lending-and-borrowing.s3-ap-northeast-1.amazonaws.com/myprefix/manga.png" width=200px;>　
