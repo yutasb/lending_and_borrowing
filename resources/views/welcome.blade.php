@@ -47,7 +47,7 @@
             <h2 class='mt-10'>Lending and Borrowing で「貸し借り」を体験しよう。</h2>
             <div class="row">
                 <div class='mt-5 ml-5 bginfo'>
-                    <input class='btn btn-info h-50 w-75 center' value='借りる！'>
+                    <button class='btn btn-info h-50 w-75 center'>借りる！</button>
                     <div class='mt-8'>
                         <p>買うほどではないけど、使いたい！</p>
                         <p>買う前に一度試してみたい！</p>
@@ -55,14 +55,14 @@
                 </div>
                 <br>
                 <div class='mt-5 ml-5 bginfo'>
-                    <input class='btn btn-info h-50 w-75 center ' value='貸す！'>
+                    <button class='btn btn-info h-50 w-75 center'>貸す！</button>
                     <div class='mt-8'>
                         <p>使う機会が少ない！</p>
                         <p>売るのはもったいない・・・</p>
                     </div>
                 </div><br>
                 <div class='mt-5 ml-5 bginfo'>
-                    <input class='btn btn-info h-50 w-75 center ' value='また貸す！'>
+                    <button class='btn btn-info h-50 w-75 center　fs30'>また貸す！</button>
                     <div class='mt-8'>
                         <p>返ってきたらまた貸せる！</p>
                         <p>何度でも貸せる！</p>
