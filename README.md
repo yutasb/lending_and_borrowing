@@ -31,7 +31,7 @@ https://lending-and-borrowing.herokuapp.com/
 
 ## 使用画面
 
-####商品一覧
+#### 商品一覧
 <img width="1440" alt="スクリーンショット 2020-01-25 11 20 23" src="https://user-images.githubusercontent.com/52826118/74647541-318aba00-51bf-11ea-8bc4-322c3e521ad2.png">
 
 #### 商品詳細情報
