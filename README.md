@@ -1,5 +1,6 @@
 # Lending and Borrowing
 
+<img width="1440" alt="スクリーンショット 2020-02-17 19 52 19" src="https://user-images.githubusercontent.com/52826118/74647478-0f913780-51bf-11ea-8bef-023d4ba4c2d3.png">
 
 
 ## サービス概要
