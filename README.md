@@ -45,18 +45,18 @@ https://lending-and-borrowing.herokuapp.com/
 
 ## 使用技術
 
-フロントエンド
-    ・HTML
-    ・CSS
-    ・JavaScript
-    ・jQuery
+#### フロントエンド
+    ・HTML  
+    ・CSS  
+    ・JavaScript  
+    ・jQuery  
 
-バックエンド
-    ・PHP 7.2.26
-    ・Laravel 6.12.0
+#### バックエンド
+    ・PHP 7.2.26  
+    ・Laravel 6.12.0  
   
-インフラストラクチャー
-    ・MySQL 5.7.26
+#### インフラストラクチャー
+    ・MySQL 5.7.26  
     
     
 
