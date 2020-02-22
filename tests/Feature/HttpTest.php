@@ -9,9 +9,6 @@ use Tests\TestCase;
 class HttpTest extends TestCase
 {
     /**
-     * A basic feature test example.
-     *
-     * @return void
      * @test
      */
 
@@ -20,12 +17,17 @@ class HttpTest extends TestCase
         $response = $this->get('/lent/new');
         $response->assertStatus(200)->assertViewIs('kashikari.new');
     }
-
+    /**
+     * @test
+     */
     public function indexHttpTest()
     {
-        $this->get('/lent')->assertStatus(200)->assertViewIs('kashikari');
+        $response = $this->get('/lent');
+        $response->assertSuccessful();
     }
-
+    /**
+     * @test
+     */
     public function categorySearchHttpTest()
     {
         $response = $this->get('/lent/category/{id}');
