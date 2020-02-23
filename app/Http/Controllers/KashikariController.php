@@ -2,16 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Chat;
+
 use Illuminate\Http\Request;
 use App\Kashikari;
-use App\Like;
 use App\Message;
-use App\Method;
-use App\User;
+
+
 
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class KashikariController extends Controller
@@ -151,49 +149,6 @@ class KashikariController extends Controller
         }
         Auth::user()->kashikaris()->find($id)->delete();
         return redirect('/mypage')->with('flash_message', __('Deleted.'));
-    }
-
-    public function myprofedit($id)
-    {
-        if (!ctype_digit($id)) {
-            return redirect('/mypage')->with('flash_message', __('Invalid operation was perfomed'));
-        }
-        $user = Auth::user()->find($id);
-
-
-        return view('kashikari.myprofedit', ['user' => $user]);
-    }
-
-    public function myprofupdate(Request $request, $id)
-    {
-        if (!ctype_digit($id)) {
-            return redirect('/mypage')->with('flash_message', __('Invalid operation was perfomed'));
-        }
-        $user = Auth::user()->find($id);
-
-
-        $picupload = $user->pic = $request->file('pic');
-        $path = Storage::disk('s3')->putFile('myprefix', $picupload, 'public');
-        $user->pic = Storage::disk('s3')->url($path);
-
-
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->myself = $request->myself;
-        $user->save();
-
-        return redirect('/mypage')->with('flash_message', __('Updated'));
-    }
-
-
-
-
-    public function otherprofile($id)
-    {
-        $users = User::find($id);
-        $kashikaris = $users->kashikaris()->get();
-        return view('kashikari.otherprofile', ['users' => $users, 'kashikaris' => $kashikaris]);
-        // str_replace("検索を行う文字列", "置き換えを行う文字列", "対象の文字列");
     }
 
     public function getCategory()

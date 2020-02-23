@@ -12,7 +12,7 @@ class HttpTest extends TestCase
      * @test
      */
 
-    public function newHttpTest()
+    public function testNewHttp()
     {
         $response = $this->get('/lent/new');
         $response->assertStatus(200)->assertViewIs('kashikari.new');
@@ -20,7 +20,7 @@ class HttpTest extends TestCase
     /**
      * @test
      */
-    public function indexHttpTest()
+    public function testIndexHttp()
     {
         $response = $this->get('/lent');
         $response->assertSuccessful();
@@ -28,7 +28,7 @@ class HttpTest extends TestCase
     /**
      * @test
      */
-    public function categorySearchHttpTest()
+    public function testCategorySearchHttp()
     {
         $response = $this->get('/lent/category/{id}');
         $response->assertStatus(200)->assertViewIs('kashikari.categorysearch');

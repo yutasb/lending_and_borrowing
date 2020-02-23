@@ -46,10 +46,10 @@ Route::get('/mypage', 'KashikariController@mypage')->name('kashikari.mypage')->m
 Route::get('/lent/return/{id}', 'LentReturnController@confirm')->name('return.confirm');
 Route::post('mypage', 'LentReturnController@return')->name('return.return');
 //返却完了→再貸出
-Route::get('/users/{id}/edit', 'KashikariController@myprofedit')->name('kashikari.myprofedit');
-Route::post('users/{id}/edit', 'KashikariController@myprofupdate')->name('kashikari.myprofupdate');
+Route::get('/users/{id}/edit', 'ProfileController@myprofedit')->name('kashikari.myprofedit');
+Route::post('users/{id}/edit', 'ProfileController@myprofupdate')->name('kashikari.myprofupdate');
 // プロフィール編集
-Route::get('/users/{id}', 'KashikariController@otherprofile')->name('kashikari.otherprofile');
+Route::get('/users/{id}', 'ProfileController@otherprofile')->name('kashikari.otherprofile');
 //他ユーザーのプロフィール表示
 Route::get('/lent/borrow/{id}', 'ChatController@confirm')->name('chat.confirm')->middleware('check');
 Route::get('/msg/{id}', 'ChatController@index')->name('chat.index');
