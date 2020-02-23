@@ -57,6 +57,7 @@ https://lending-and-borrowing.herokuapp.com/
   
 #### インフラストラクチャー
     ・MySQL 5.7.26  
+    ・AWS (S3)
     
     
 
