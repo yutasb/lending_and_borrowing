@@ -34,7 +34,7 @@ Route::get('/lent/search/title={title}', 'SearchController@wordsearch')->name('k
 //ワード検索
 Route::get('/lent/{id}', 'KashikariController@show')->name('kashikari.show');
 // 投稿詳細表示
-Route::post('/lent/{id}', 'KashikariController@sendmsg')->middleware('check');
+Route::post('/lent/{id}', 'MessageController@sendmsg')->middleware('check');
 //公開掲示板
 Route::get('/lent/{id}/edit', 'KashikariController@edit')->name('kashikari.edit');
 Route::post('/lent/{id}/edit', 'KashikariController@update')->name('kashikari.update');
